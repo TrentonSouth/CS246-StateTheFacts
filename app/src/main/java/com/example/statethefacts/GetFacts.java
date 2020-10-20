@@ -25,6 +25,7 @@ public class GetFacts extends Thread {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String json = dataSnapshot.getValue().toString();
+                
 
                 Log.d("TAG", "Value is: " + json);
             }
