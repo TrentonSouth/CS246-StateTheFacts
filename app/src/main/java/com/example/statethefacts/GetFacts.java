@@ -25,10 +25,10 @@ public class GetFacts extends Thread {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String json = dataSnapshot.getValue().toString();
-                
-                Gson gson = new Gson();
-                Facts facts = gson.fromJson(json,Facts.class);
-                Log.d("TAG", "Value is: " + facts.states.get(0).abbreviation);
+                //Gson gson = new Gson();
+                //Facts facts = gson.fromJson(json, Facts.class);
+                //Log.d("TAG", "Value is: " + facts.states.get(0).abbreviation);
+                Log.d("TAG", "Value is: " + json);
             }
 
             public void onCancelled(DatabaseError error) {
