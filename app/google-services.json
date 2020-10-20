@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "360128854469",
+    "firebase_url": "https://cs246-statethefacts.firebaseio.com",
+    "project_id": "cs246-statethefacts",
+    "storage_bucket": "cs246-statethefacts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:360128854469:android:bf6b896557b9bfa3a2f3ac",
+        "android_client_info": {
+          "package_name": "com.example.statethefacts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "360128854469-270l9gbn84vrltppm2oclkk6p5cm8r5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDagm95mHD2dO_HE8r32u-4DN5RR4fa9e4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "360128854469-270l9gbn84vrltppm2oclkk6p5cm8r5d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
