@@ -3,7 +3,7 @@ package com.example.statethefacts;
 import android.app.Activity;
 import android.util.Log;
 import com.google.firebase.database.*;
-
+import com.google.gson.Gson;
 
 
 import java.lang.ref.WeakReference;
@@ -26,8 +26,9 @@ public class GetFacts extends Thread {
                 // whenever data at this location is updated.
                 String json = dataSnapshot.getValue().toString();
                 
-
-                Log.d("TAG", "Value is: " + json);
+                Gson gson = new Gson();
+                Facts facts = gson.fromJson(json,Facts.class);
+                Log.d("TAG", "Value is: " + facts.states.get(0).abbreviation);
             }
 
             public void onCancelled(DatabaseError error) {
