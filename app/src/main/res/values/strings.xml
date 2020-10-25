@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StateTheFacts</string>
+    <string name="app_title">State The Facts</string>
+    <string name="button_charts_example">Charts Example</string>
 </resources>

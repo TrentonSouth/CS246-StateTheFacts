@@ -1,7 +1,11 @@
 package com.example.statethefacts;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         GetFacts facts = new GetFacts(this);
         Thread thread = new Thread(facts);
         thread.start();
+    }
+
+    public void showChartsExample(View view){
+
+        Intent intent = new Intent(this, ChartsExampleActivity.class);
+        startActivity(intent);
     }
 
 }
