@@ -14,6 +14,9 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// Charts library information can be found at https://github.com/PhilJay/MPAndroidChart
+
 public class ChartsExampleActivity extends AppCompatActivity {
 
     @Override
