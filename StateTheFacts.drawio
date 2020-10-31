@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-10-31T02:32:38.057Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" etag="Xv4WV5iRCd64VRkzNIZh" version="13.8.8" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-10-31T02:43:27.669Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36" etag="-wohyaVSooC-rUJ6qWx7" version="13.8.8" type="github" pages="2">
   <diagram id="sm37lmygg3lwEjV5lF5L" name="Page-1">
-    <mxGraphModel dx="937" dy="4065" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1339" dy="4393" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -328,7 +328,7 @@
           <mxGeometry y="118" width="215" height="72" as="geometry" />
         </mxCell>
         <mxCell id="hInqFD5bW0AvhcCBJAkP-13" value="GameAnswer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#B2C9AB;strokeColor=#788AA3;fontColor=#46495D;" vertex="1" parent="1">
-          <mxGeometry x="640" y="-2040" width="220" height="170" as="geometry" />
+          <mxGeometry x="680" y="-2040" width="220" height="170" as="geometry" />
         </mxCell>
         <mxCell id="hInqFD5bW0AvhcCBJAkP-14" value="- state: string&#xa;- answer: string&#xa;- factType: int&#xa;- hasCorrectAnswer: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#46495D;" vertex="1" parent="hInqFD5bW0AvhcCBJAkP-13">
           <mxGeometry y="26" width="220" height="64" as="geometry" />
@@ -339,11 +339,14 @@
         <mxCell id="hInqFD5bW0AvhcCBJAkP-16" value="+ GameAnswer(string, string, int, bool);&#xa;+ getState(): string&#xa;+ getFactType(): int&#xa;+ getHasCorrectAnswer(): bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#46495D;" vertex="1" parent="hInqFD5bW0AvhcCBJAkP-13">
           <mxGeometry y="98" width="220" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="hInqFD5bW0AvhcCBJAkP-20" value="Relation" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#788AA3;fontColor=#46495D;entryX=1.005;entryY=0.679;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="hInqFD5bW0AvhcCBJAkP-10">
+        <mxCell id="hInqFD5bW0AvhcCBJAkP-20" value="Relation" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#788AA3;fontColor=#46495D;entryX=1.005;entryY=0.679;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.009;exitY=0.969;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="hInqFD5bW0AvhcCBJAkP-14" target="hInqFD5bW0AvhcCBJAkP-10">
           <mxGeometry x="0.0277" y="-15" relative="1" as="geometry">
-            <mxPoint x="637" y="-1957" as="sourcePoint" />
+            <mxPoint x="640" y="-1957" as="sourcePoint" />
             <mxPoint x="540" y="-1830" as="targetPoint" />
-            <Array as="points" />
+            <Array as="points">
+              <mxPoint x="610" y="-1952" />
+              <mxPoint x="610" y="-1957" />
+            </Array>
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
