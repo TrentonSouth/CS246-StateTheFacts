@@ -19,9 +19,14 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
     }
 
-    public void showChartsExample(View view){
-
+    public void showChartsExample(View view) {
         Intent intent = new Intent(this, ChartsExampleActivity.class);
+        startActivity(intent);
+    }
+
+    public void startGame(View view){
+        Intent intent = new Intent(this, GameQuestionActivity.class);
+        intent.putExtra("gameType", GameType.MultipleChoice);
         startActivity(intent);
     }
 
