@@ -5,6 +5,7 @@
     <string name="button_start_game">Start Game</string>
     <string name="button_submit_answer">Submit Answer</string>
     <string name="title_activity_facts_list">ScrollingActivity</string>
+    <string name="button_get_facts">Get Facts</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

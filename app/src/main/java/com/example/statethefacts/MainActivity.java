@@ -1,5 +1,6 @@
 package com.example.statethefacts;
 
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        GetFacts facts = new GetFacts(this);
+        LoadFacts facts = new LoadFacts(this);
         Thread thread = new Thread(facts);
         thread.start();
     }
@@ -30,4 +31,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void getFacts(View view) {
+        GetFacts gf = new GetFacts();
+        Facts facts = gf.Fetch(this);
+        Log.d("Message:", "Value is: " + facts.states.get(0).abbreviation);
+    }
 }
