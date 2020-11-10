@@ -14,11 +14,11 @@ public class GameQuestionPresenter {
 
     public GameQuestion getNextQuestion() {
         List<State> states = new ArrayList<>();
-        states.add(new State("AZ","Phoenix","Arizona"));
-        states.add(new State("OK","Oklahoma City","Oklahoma"));
-        states.add(new State("TX","Austin","Texas"));
-        states.add(new State("KN","Topeka","Kansas"));
-        states.add(new State("LO","Baton Rouge","Louisiana"));
+        states.add(new State("AZ","Phoenix","Arizona","","","",""));
+        states.add(new State("OK","Oklahoma City","Oklahoma","","","",""));
+        states.add(new State("TX","Austin","Texas","","","",""));
+        states.add(new State("KN","Topeka","Kansas","","","",""));
+        states.add(new State("LO","Baton Rouge","Louisiana","","","",""));
 
 
         question = new GameQuestion(states,QuestionsType.Capital);
