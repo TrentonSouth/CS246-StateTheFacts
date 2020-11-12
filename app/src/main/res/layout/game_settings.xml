@@ -11,6 +11,8 @@
         android:layout_width="127dp"
         android:layout_height="31dp"
         android:layout_marginTop="40dp"
+        android:checked="true"
+        android:clickable="true"
         android:text="Capital"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.235"
@@ -24,6 +26,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="12dp"
+        android:clickable="true"
         android:text="Bird"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxCapital" />
@@ -35,6 +38,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="12dp"
+        android:clickable="true"
         android:text="Rock"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxBird" />
@@ -46,15 +50,19 @@
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:layout_marginTop="12dp"
+        android:clickable="true"
         android:text="Governor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBoxRock" />
 
+    //do I need to make a group here?
+    //https://developer.android.com/guide/topics/ui/controls/radiobutton
     <RadioButton
         android:id="@+id/radioButtonMultipleChoice"
         android:layout_width="164dp"
         android:layout_height="30dp"
         android:layout_marginTop="20dp"
+        android:clickable="true"
         android:text="Multiple Choice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.206"
@@ -68,6 +76,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="12dp"
+        android:clickable="true"
         android:text="Text Entry"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioButtonMultipleChoice" />
