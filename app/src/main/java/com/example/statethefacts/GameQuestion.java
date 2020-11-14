@@ -10,11 +10,12 @@ public class GameQuestion {
     private String state = "";
     private QuestionsType questionType;
     private String question = "";
-    private String answer = "";
-    private String option1 = "";
-    private String option2 = "";
-    private String option3 = "";
-    private String option4 = "";
+    private State answer = null;
+    private State option1 = null;
+    private State option2 = null;
+    private State option3 = null;
+    private State option4 = null;
+
     private HashMap<String,State> states = new HashMap<>();
     private List<String> stateNames = new ArrayList<>();
 
@@ -39,7 +40,7 @@ public class GameQuestion {
         State selectedState = states.get(state);
 
         this.state = state;
-        this.answer = getStateFact(selectedState);
+        this.answer = selectedState;
 
         if(gameType == GameType.TextEntry)
             return;
@@ -59,6 +60,12 @@ public class GameQuestion {
             case Rock:
                 question = "What is the state Rock for " + state.trim() +"?";
                 break;
+            case Flower:
+                question = "What is the state Flower for " + state.trim() +"?";
+                break;
+            case Governor:
+                question = "What is the state Governor for " + state.trim() +"?";
+                break;
             default:
                 question = "Unknown game type!";
                 break;
@@ -72,19 +79,18 @@ public class GameQuestion {
         setOption(answerSlot, answer);
 
         do {
-            String randomAnswer = getRandomFact();
+            State randomAnswer = getRandomFact();
             answerSlot = getUnsetOptionSlot(slots);
             setOption(answerSlot, randomAnswer);
 
         } while(slots.size() > 0);
     }
 
-    private String getRandomFact() {
+    private State getRandomFact() {
         do {
             State selectedState = getRandomState();
-            String answer = getStateFact(selectedState);
-            if (isAnswerUnused(answer))
-                return answer;
+            if (isAnswerUnused(selectedState))
+                return selectedState;
         } while(true);
     }
 
@@ -95,14 +101,14 @@ public class GameQuestion {
         return states.get(stateName);
     }
 
-    private boolean isAnswerUnused(String answer) {
-        if(option1.equals(answer))
+    private boolean isAnswerUnused(State answer) {
+        if(option1 != null && option1.equals(answer))
             return false;
-        if(option2.equals(answer))
+        if(option2 != null && option2.equals(answer))
             return false;
-        if(option3.equals(answer))
+        if(option3 != null && option3.equals(answer))
             return false;
-        if(option4.equals(answer))
+        if(option4 != null && option4.equals(answer))
             return false;
         return true;
     }
@@ -122,7 +128,7 @@ public class GameQuestion {
         return list;
     }
 
-    private void setOption(int optionSlot, String option) {
+    private void setOption(int optionSlot, State option) {
         switch (optionSlot){
             case 0:
                 option1 = option;
@@ -146,9 +152,13 @@ public class GameQuestion {
             case Capital:
                 return selectedState.capital;
             case Bird:
-                return "bird";
+                return selectedState.bird;
             case Rock:
-                return "rock";
+                return selectedState.rock;
+            case Flower:
+                return selectedState.flower;
+            case Governor:
+                return selectedState.governor;
             default:
                 return "Unknown Question Type";
         }
@@ -162,24 +172,22 @@ public class GameQuestion {
         return question;
     }
 
-    public String getAnswer() {
-        return answer;
-    }
+    public String getAnswer() { return getStateFact(answer); }
 
     public QuestionsType getQuestionType() {
         return questionType;
     }
     public String getOption1() {
-        return option1;
+        return getStateFact(option1);
     }
     public String getOption2() {
-        return option2;
+        return getStateFact(option2);
     }
     public String getOption3() {
-        return option3;
+        return getStateFact(option3);
     }
     public String getOption4() {
-        return option4;
+        return getStateFact(option4);
     }
 
 }

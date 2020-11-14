@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void showAnswer(View view){
+        Intent intent = new Intent(this, CardFlipperActivity.class);
+        startActivity(intent);
+    }
+
+
     public void getFacts(View view) {
         GetFacts gf = new GetFacts();
         Facts facts = gf.Fetch(this);

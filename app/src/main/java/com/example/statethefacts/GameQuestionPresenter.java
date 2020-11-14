@@ -4,36 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameQuestionPresenter {
-    private GameType gameType;
+    private CardFlipperActivity activity;
     private GameQuestion question;
+    private List<State> states;
+    private GameResult gameResult;
+    private GameAnswer lastAnswer;
 
-    public GameQuestionPresenter(GameType gameType){
-        this.gameType = gameType;
+    public GameQuestionPresenter(CardFlipperActivity activity, GameType gameType){
+        this.activity = activity;
 
+        GetFacts gf = new GetFacts();
+        states = gf.Fetch(activity).states;
+        gameResult = new GameResult(gameType);
     }
 
-    public GameQuestion getNextQuestion() {
-        List<State> states = new ArrayList<>();
-        states.add(new State("AZ","Phoenix","Arizona","","","",""));
-        states.add(new State("OK","Oklahoma City","Oklahoma","","","",""));
-        states.add(new State("TX","Austin","Texas","","","",""));
-        states.add(new State("KN","Topeka","Kansas","","","",""));
-        states.add(new State("LO","Baton Rouge","Louisiana","","","",""));
-
-
-        question = new GameQuestion(states,QuestionsType.Capital);
-        question.generate("Texas", GameType.MultipleChoice);
+    public GameQuestion getNextQuestion(QuestionsType questionsType) {
+        question = new GameQuestion(states,questionsType);
+        question.generate("Texas", gameResult.getGameType());
         return question;
     }
 
-    public String checkAnswer(String submittedAnswer) {
-        String answer = question.getAnswer();
-        if(answer.toLowerCase().equalsIgnoreCase(submittedAnswer.toLowerCase()))
-        {
-            return "Correct Answer!";
-        }
-        return "Wrong Answer!";
+    public void submitAnswer(String submittedAnswer) {
+        lastAnswer = new GameAnswer(gameResult.getGameId(), question.getState(), question.getAnswer(), submittedAnswer, question.getQuestionType());
+        gameResult.AddAnswer(lastAnswer);
+        activity.flipCard();
     }
 
 
+    public GameQuestion getQuestion(){
+        return question;
+    }
+
+    public GameAnswer getLastAnswer() {
+        return lastAnswer;
+    }
 }
