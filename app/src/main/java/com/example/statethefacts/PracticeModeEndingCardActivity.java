@@ -1,5 +1,6 @@
 package com.example.statethefacts;
 
+import android.os.Bundle;
 import android.widget.Button;
 
 public class PracticeModeEndingCardActivity {
@@ -7,9 +8,7 @@ public class PracticeModeEndingCardActivity {
     Button buttonNextState;
     Button buttonMainMenu;
 
-    /*public onCreate() {
+    //https://www.appsdeveloperblog.com/how-to-start-new-activity-on-button-click/
 
-    }*/
-
-
+    
 }
