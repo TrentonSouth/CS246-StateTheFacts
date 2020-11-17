@@ -9,23 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserProfileActivity"
-                  android:parentActivityName=".MainActivity">
+        <activity android:name=".MissedQuestionsActivity"></activity>
+        <activity android:name=".FactsList" />
+        <activity
+            android:name=".UserProfileActivity"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".GameQuestionActivity" />
         <activity android:name=".ChartsExampleActivity" />
-        <activity
-            android:name=".MissedAnswersActivity"
-            android:label="@string/title_activity_missed_answers"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".FactsListActivity"
-            android:label="@string/title_activity_facts_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".ScoreCardActivity"></activity>
+        <activity android:name=".ScoreCardActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
