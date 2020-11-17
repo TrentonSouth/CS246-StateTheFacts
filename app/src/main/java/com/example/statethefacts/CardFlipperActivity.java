@@ -59,6 +59,7 @@ public class CardFlipperActivity extends AppCompatActivity {
 
         showingBack = !showingBack;
 
+
         // Create and commit a new fragment transaction that adds the fragment for
         // the back of the card, uses custom animations, and is part of the fragment
         // manager's back stack.
@@ -93,6 +94,9 @@ public class CardFlipperActivity extends AppCompatActivity {
         RadioGroup radioGroup = findViewById(R.id.radioGroup_answers);
         int selectedId = radioGroup.getCheckedRadioButtonId();
         RadioButton selectedRadioButton = findViewById(selectedId);
+        if(selectedRadioButton == null)
+            return;
+
         String answer = selectedRadioButton.getText().toString();
         presenter.submitAnswer(answer);
     }
@@ -110,7 +114,6 @@ public class CardFlipperActivity extends AppCompatActivity {
 
         public CardFrontFragment(GameQuestionPresenter presenter) {
             this.presenter = presenter;
-
         }
 
         @Override
