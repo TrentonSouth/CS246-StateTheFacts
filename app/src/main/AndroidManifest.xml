@@ -22,7 +22,10 @@
         <activity android:name=".GameQuestionActivity" />
         <activity android:name=".ChartsExampleActivity" />
         <activity android:name=".ScoreCardActivity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".PracticeModeEndingCardActivity"/>
+        <activity android:name=".PracticeModeReviewActivity"/>
+        <activity android:name=".GameSettingsActivity"/> <!-- change back to MainActivity for testing-->
+        <activity android:name=".MainActivity"> <!-- change back to GameSettingsActivity for testing-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

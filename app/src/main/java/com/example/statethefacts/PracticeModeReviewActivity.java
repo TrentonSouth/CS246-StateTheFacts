@@ -1,13 +1,17 @@
 package com.example.statethefacts;
 
+import android.os.Bundle;
 import android.widget.Button;
 
-public class PracticeModeReviewActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PracticeModeReviewActivity extends AppCompatActivity {
     Button buttonNextState;
 
 
-    /*public onCreate() {
-
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.practice_mode_answer);
     }
-     */
+
 }

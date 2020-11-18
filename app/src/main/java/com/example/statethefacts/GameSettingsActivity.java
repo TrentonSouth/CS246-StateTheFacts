@@ -1,10 +1,13 @@
 package com.example.statethefacts;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 
-public class GameSettingsActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class GameSettingsActivity extends AppCompatActivity {
 
     boolean checkBoxCapital;
     boolean checkBoxFlower;
@@ -15,8 +18,11 @@ public class GameSettingsActivity {
     boolean radioButtonTextEntry;
     GameSettingsPresenter gameSettingsPresenter;
 
-    /*public onCreate() {
-    }*/
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.game_settings);
+    }
 
     //https://developer.android.com/guide/topics/ui/controls/checkbox#:~:text=To%20define%20the%20click%20event,then%20implement%20the%20corresponding%20method.
     public void handleCheckBox(View view) {
@@ -28,11 +34,11 @@ public class GameSettingsActivity {
                     checkBoxCapital = true;
                     break;
                 }
-            /*case R.id.checkBoxFlower:
+            case R.id.checkBoxFlower:
                 if (checked) {
                     checkBoxFlower = true;
                     break;
-                }*/
+                }
             case R.id.checkBoxRock:
                 if (checked) {
                     checkBoxRock = true;
