@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".CardFlipperActivity"/>
         <activity android:name=".MissedQuestionsActivity"/>
-        <activity android:name=".FactsList" />
+        <activity android:name=".FactsListActivity" />
         <activity
             android:name=".UserProfileActivity"
             android:parentActivityName=".MainActivity">

@@ -65,4 +65,10 @@ public class MainActivity extends AppCompatActivity {
         Facts facts = gf.Fetch(this);
         Log.d("Message:", "Value is: " + facts.states.get(0).abbreviation);
     }
+
+    public void showFactsList(View view) {
+        Intent intent = new Intent(this, FactsListActivity.class);
+        startActivity(intent);
+    }
+
 }
