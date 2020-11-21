@@ -42,23 +42,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void showChartsExample(View view) {
         Intent intent = new Intent(this, ChartsExampleActivity.class);
         startActivity(intent);
     }
 
-    public void startGame(View view){
-        Intent intent = new Intent(this, GameQuestionActivity.class);
-        intent.putExtra("gameType", GameType.MultipleChoice);
-        startActivity(intent);
-    }
-
     public void showAnswer(View view){
-        Intent intent = new Intent(this, CardFlipperActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
-
 
     public void getFacts(View view) {
         GetFacts gf = new GetFacts();

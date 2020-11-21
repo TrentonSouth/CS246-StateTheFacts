@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">StateTheFacts</string>
+    <string name="app_name">State The Facts</string>
     <string name="app_title">State The Facts</string>
     <string name="button_charts_example">Charts Example</string>
     <string name="button_start_game">Start Game</string>
     <string name="button_submit_answer">Submit Answer</string>
     <string name="button_show_answer">Show Answer</string>
-    <string name="button_next_question">Next Questions</string>
+    <string name="button_next_question">Next Question</string>
     <string name="button_save_userPreferences">Save</string>
     <string name="button_change_profile">Change Profile</string>
     <string name="title_activity_facts_list">ScrollingActivity</string>
@@ -30,4 +30,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_answer">Enter Answer</string>
+    <string name="button_email_history">Email History</string>
 </resources>

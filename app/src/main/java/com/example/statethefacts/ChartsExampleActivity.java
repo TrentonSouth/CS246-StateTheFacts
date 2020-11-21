@@ -37,7 +37,7 @@ public class ChartsExampleActivity extends AppCompatActivity {
         chart.setData(lineData);
 
         Description description = new Description();
-        description.setText("Example Line Chart");
+        description.setText("Last 10 Games");
         description.setTextSize(16f);
         chart.setDescription(description);
 

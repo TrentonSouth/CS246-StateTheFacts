@@ -16,7 +16,7 @@ import com.example.statethefacts.R;
 
 public class CardFlipperFragment extends Fragment {
 
-    private MainViewModel mViewModel;
+    private GameViewModel mViewModel;
 
     public static CardFlipperFragment newInstance() {
         return new CardFlipperFragment();
@@ -32,7 +32,7 @@ public class CardFlipperFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(GameViewModel.class);
         // TODO: Use the ViewModel
     }
 
