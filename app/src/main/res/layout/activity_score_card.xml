@@ -72,7 +72,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        android:onClick="loadPlayAgain"
+        android:onClick="loadMenu"
         android:text="@string/button_main_menu"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
