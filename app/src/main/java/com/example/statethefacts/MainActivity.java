@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getFacts(View view) {
-        GetFacts gf = new GetFacts();
-        Facts facts = gf.Fetch(this);
-        Log.d("Message:", "Value is: " + facts.states.get(0).abbreviation);
+
+    public void loadScoreCard(View view){
+        Intent intent = new Intent(this, ScoreCardActivity.class);
+        startActivity(intent);
     }
 
     public void showFactsList(View view) {

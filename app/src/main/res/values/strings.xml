@@ -19,6 +19,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_missed_answers">ScrollingActivity</string>
 
+    <string name="button_load_score_card">Load Score Card</string>
     <string name="button_play_again">Play Again</string>
     <string name="button_history">History</string>
     <string name="button_main_menu">Main Menu</string>
