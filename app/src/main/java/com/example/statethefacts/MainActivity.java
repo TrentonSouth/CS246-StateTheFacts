@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
+    public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAnswer(View view){
         Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
+        intent.putExtra(START_NEW_GAME, false);
         startActivity(intent);
     }
 

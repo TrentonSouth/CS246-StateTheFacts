@@ -1,17 +1,15 @@
 package com.example.statethefacts;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.statethefacts.ui.main.CardAnswerFragment;
 import com.example.statethefacts.ui.main.CardMultipleChoiceFragment;
@@ -20,98 +18,77 @@ import com.example.statethefacts.ui.main.GameViewModel;
 
 public class GameActivity extends AppCompatActivity {
 
-    private GameQuestionPresenter presenter;
+    GameViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_flipper_activity);
 
-        GameViewModel model = new ViewModelProvider(this).get(GameViewModel.class);
+        Intent intent  = getIntent();
+        int gameTypeValue = intent.getIntExtra(MainActivity.GAMETYPE, GameType.MultipleChoice.ordinal());
+        GameType gameType = GameType.values()[gameTypeValue];
 
-        presenter = new GameQuestionPresenter(this, GameType.TextEntry);
+        boolean startNewGame = intent.getBooleanExtra(MainActivity.START_NEW_GAME,true);
 
+        viewModel = new ViewModelProvider(this).get(GameViewModel.class);
+        if(startNewGame)
+            viewModel.StartNewGame(gameType);
+        else
+            viewModel.ResumeGame();
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, new CardTextEntryFragment(presenter))
+                    .replace(R.id.container, new CardTextEntryFragment(viewModel))
                     .commit();
         }
     }
 
-    public void onFlipCard(View view) {
-        flipCard();
+    @Override
+    protected void onPause(){
+        super.onPause();
+
+        viewModel.saveGame();
     }
+
 
     private boolean showingBack;
 
     public void flipCard() {
-//        if (showingBack) {
-//            getSupportFragmentManager().popBackStack();
-//            showingBack = false;
-//            return;
-//        }
-
-        // Flip to the back.
-
-        //showingBack = true;
-
-
         Fragment nextCard;
         if (showingBack) {
-            switch (presenter.getGameType()) {
+            switch (viewModel.getGameType()) {
                 case MultipleChoice:
-                    nextCard = new CardMultipleChoiceFragment(presenter);
+                    nextCard = new CardMultipleChoiceFragment(viewModel);
                     break;
                 case TextEntry:
-                    nextCard = new CardTextEntryFragment(presenter);
+                    nextCard = new CardTextEntryFragment(viewModel);
                     break;
                 default:
-                    throw new IllegalArgumentException("Invalid Game Type: " + presenter.getGameType().toString());
+                    throw new IllegalArgumentException("Invalid Game Type: " + viewModel.getGameType().toString());
             }
         } else {
-            nextCard = new CardAnswerFragment(presenter);
+            nextCard = new CardAnswerFragment(viewModel);
         }
-
 
         showingBack = !showingBack;
 
-
-        // Create and commit a new fragment transaction that adds the fragment for
-        // the back of the card, uses custom animations, and is part of the fragment
-        // manager's back stack.
-
         getSupportFragmentManager()
                 .beginTransaction()
-
-                // Replace the default fragment animations with animator resources
-                // representing rotations when switching to the back of the card, as
-                // well as animator resources representing rotations when flipping
-                // back to the front (e.g. when the system Back button is pressed).
                 .setCustomAnimations(
                         R.animator.card_flip_right_in,
                         R.animator.card_flip_right_out,
                         R.animator.card_flip_right_in,
                         R.animator.card_flip_right_out)
-
-                // Replace any fragments currently in the container view with a
-                // fragment representing the next page (indicated by the
-                // just-incremented currentPage variable).
                 .replace(R.id.container, nextCard)
-
-                // Add this transaction to the back stack, allowing users to press
-                // Back to get to the front of the card.
-                //.addToBackStack(null)
-
-                // Commit the transaction.
                 .commit();
     }
 
     public void submitAnswer(View view) {
 
         String answer = "";
-        switch (presenter.getGameType()) {
+        switch (viewModel.getGameType()) {
             case MultipleChoice:
                 RadioGroup radioGroup = findViewById(R.id.radioGroup_answers);
                 int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -131,25 +108,14 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
             default:
-                throw new IllegalArgumentException("Invalid Game Type: " + presenter.getGameType().toString());
+                throw new IllegalArgumentException("Invalid Game Type: " + viewModel.getGameType().toString());
         }
 
-        presenter.submitAnswer(answer);
-
+        viewModel.submitAnswer(answer);
+        flipCard();
     }
 
     public void nextQuestion(View view) {
         flipCard();
     }
-
-
-    /**
-     * A fragment representing the front of the card.
-     */
-
-
-    /**
-     * A fragment representing the back of the card.
-     */
-
 }

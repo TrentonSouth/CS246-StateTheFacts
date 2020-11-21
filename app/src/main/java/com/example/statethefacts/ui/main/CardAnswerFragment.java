@@ -6,20 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.statethefacts.GameAnswer;
 import com.example.statethefacts.GameQuestion;
-import com.example.statethefacts.GameQuestionPresenter;
 import com.example.statethefacts.R;
 
 public  class CardAnswerFragment extends Fragment {
-    private GameQuestionPresenter presenter;
+    private GameViewModel viewModel;
 
-    public CardAnswerFragment(GameQuestionPresenter presenter) {
-
-        this.presenter = presenter;
-
+    public CardAnswerFragment(GameViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Override
@@ -27,8 +26,8 @@ public  class CardAnswerFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_card_answer, container, false);
 
-        GameAnswer lastAnswer = presenter.getLastAnswer();
-        GameQuestion lastQuestion = presenter.getQuestion();
+        GameAnswer lastAnswer = viewModel.getLastAnswer();
+        GameQuestion lastQuestion = viewModel.getQuestion();
 
         TextView textViewQuestion = view.findViewById(R.id.textView_question);
         textViewQuestion.setText("Question was " + lastQuestion.getQuestion());
@@ -50,5 +49,12 @@ public  class CardAnswerFragment extends Fragment {
         textViewAnswerResult.setText(answerResult);
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+        // TODO: Use the ViewModel
     }
 }

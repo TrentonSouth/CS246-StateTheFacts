@@ -1,9 +1,14 @@
 package com.example.statethefacts.ui.main;
 
-import androidx.lifecycle.ViewModel;
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+import androidx.lifecycle.AndroidViewModel;
 
 import com.example.statethefacts.Facts;
-import com.example.statethefacts.GameActivity;
 import com.example.statethefacts.GameAnswer;
 import com.example.statethefacts.GameQuestion;
 import com.example.statethefacts.GameResult;
@@ -14,23 +19,29 @@ import com.example.statethefacts.State;
 
 import java.util.List;
 
-public class GameViewModel extends ViewModel {
+public class GameViewModel extends AndroidViewModel {
     private GameQuestion question;
     private List<State> states;
     private GameResult gameResult;
     private GameAnswer lastAnswer;
-    private GameType gameType;
 
-
-    public GameViewModel(){
-        //this.activity = activity;
+    public GameViewModel(Application application){
+        super(application);
 
         GetFacts gf = new GetFacts();
+        Facts facts = gf.Fetch(getApplication().getApplicationContext());
+        states = facts.getStates();
 
-//        Facts facts = gf.Fetch(this);
-//        states = facts.getStates();
-//        this.gameType = gameType;
-        gameResult = new GameResult(gameType);
+        gameResult = new GameResult();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void ResumeGame() {
+         gameResult = gameResult.LoadCurrentGame(getApplication().getApplicationContext());
+    }
+
+    public void StartNewGame(GameType gameType){
+        gameResult.StartNewGame(gameType);
     }
 
     public GameQuestion getNextQuestion(QuestionsType questionsType) {
@@ -53,5 +64,9 @@ public class GameViewModel extends ViewModel {
         return lastAnswer;
     }
 
-    public GameType getGameType() { return gameType; }
+    public GameType getGameType() { return gameResult.getGameType(); }
+
+    public void saveGame() {
+        gameResult.SaveCurrentGame(getApplication().getApplicationContext());
+    }
 }
