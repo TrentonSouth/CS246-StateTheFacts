@@ -19,6 +19,12 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_missed_answers">ScrollingActivity</string>
 
+    <string name="button_play_again">Play Again</string>
+    <string name="button_history">History</string>
+    <string name="button_main_menu">Main Menu</string>
+    <string name="button_review_missed_facts">Review Missed Facts</string>
+
+
     <string name="text_unset_value"></string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

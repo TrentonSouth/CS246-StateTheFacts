@@ -10,4 +10,16 @@ public class ScoreCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_card);
     }
+    public void loadHistory() {
+
+    }
+    public void loadMissedQuestions() {
+
+    }
+    public void loadPlayAgain() {
+
+    }
+    public void loadMenu() {
+
+    }
 }
