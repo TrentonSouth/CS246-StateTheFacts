@@ -3,12 +3,12 @@ package com.example.statethefacts;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameSettingsActivity extends AppCompatActivity {
-
     boolean checkBoxCapital;
     boolean checkBoxFlower;
     boolean checkBoxRock;
@@ -16,7 +16,6 @@ public class GameSettingsActivity extends AppCompatActivity {
     boolean checkBoxBird;
     boolean radioButtonMultipleChoice;
     boolean radioButtonTextEntry;
-    GameSettingsPresenter gameSettingsPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,8 +23,12 @@ public class GameSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.game_settings);
     }
 
-    //https://developer.android.com/guide/topics/ui/controls/checkbox#:~:text=To%20define%20the%20click%20event,then%20implement%20the%20corresponding%20method.
+    /**
+     *
+     * @param view
+     */
     public void handleCheckBox(View view) {
+        //https://developer.android.com/guide/topics/ui/controls/checkbox#:~:text=To%20define%20the%20click%20event,then%20implement%20the%20corresponding%20method.
         boolean checked = ((CheckBox)view).isChecked();
 
         switch (view.getId()) {
@@ -58,8 +61,12 @@ public class GameSettingsActivity extends AppCompatActivity {
         }
     }
 
-    //https://developer.android.com/guide/topics/ui/controls/radiobutton
+    /**
+     *
+     * @param view
+     */
     public void handleRadioButtons(View view) {
+        //https://developer.android.com/guide/topics/ui/controls/radiobutton
         boolean checked = ((RadioButton)view).isChecked();
 
         switch (view.getId()) {
