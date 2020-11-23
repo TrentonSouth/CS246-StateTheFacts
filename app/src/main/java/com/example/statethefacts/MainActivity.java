@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
+    public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,28 +45,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     public void showChartsExample(View view) {
         Intent intent = new Intent(this, ChartsExampleActivity.class);
         startActivity(intent);
     }
 
-    public void startGame(View view){
-        Intent intent = new Intent(this, GameQuestionActivity.class);
-        intent.putExtra("gameType", GameType.MultipleChoice);
-        startActivity(intent);
-    }
-
     public void showAnswer(View view){
-        Intent intent = new Intent(this, CardFlipperActivity.class);
+        Intent intent = new Intent(this, GameActivity.class);
+        intent.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
+        intent.putExtra(START_NEW_GAME, false);
         startActivity(intent);
     }
 
 
-    public void getFacts(View view) {
-        GetFacts gf = new GetFacts();
-        Facts facts = gf.Fetch(this);
-        Log.d("Message:", "Value is: " + facts.states.get(0).abbreviation);
+    public void loadScoreCard(View view){
+        Intent intent = new Intent(this, ScoreCardActivity.class);
+        startActivity(intent);
     }
 
     public void showFactsList(View view) {
