@@ -49,7 +49,7 @@ public class GameSettings {
 
 
 
-    public boolean getCapitol() {
+    public boolean getCapital() {
         return capital;
     }
 

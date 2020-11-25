@@ -26,6 +26,11 @@ public class GameSettingsPresenter {
     public void getSettings() {
         gameSettings.LoadSettings();
 
+        gameSettingsActivity.checkBoxBird = gameSettings.getBird();
+        gameSettingsActivity.checkBoxCapital = gameSettings.getCapital();
+        gameSettingsActivity.checkBoxFlower = gameSettings.getFlower();
+        gameSettingsActivity.checkBoxGovernor = gameSettings.getGovernor();
+        gameSettingsActivity.checkBoxRock = gameSettings.getRock();
     }
 
 
