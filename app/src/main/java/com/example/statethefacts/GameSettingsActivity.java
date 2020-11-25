@@ -1,6 +1,7 @@
 package com.example.statethefacts;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -23,41 +24,45 @@ public class GameSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.game_settings);
     }
 
+    public void test(View view) {
+        Log.d("message: ", "just logging a message");
+    }
+
     /**
      *
      * @param view
      */
     public void handleCheckBox(View view) {
         //https://developer.android.com/guide/topics/ui/controls/checkbox#:~:text=To%20define%20the%20click%20event,then%20implement%20the%20corresponding%20method.
-        boolean checked = ((CheckBox)view).isChecked();
+        boolean checked = ((CheckBox) view).isChecked();
+        Log.d("message: ", "testing to see if we got here");
 
         switch (view.getId()) {
             case R.id.checkBoxCapital:
                 if (checked) {
                     checkBoxCapital = true;
-                    break;
-                }
+                } else checkBoxCapital = false;
+                break;
             case R.id.checkBoxFlower:
                 if (checked) {
                     checkBoxFlower = true;
-                    break;
-                }
+                } else checkBoxFlower = false;
+                break;
             case R.id.checkBoxRock:
                 if (checked) {
                     checkBoxRock = true;
-                }
+                } else checkBoxRock = false;
+                break;
             case R.id.checkBoxGovernor:
                 if (checked) {
                     checkBoxGovernor = true;
-                    break;
-                }
+                } else checkBoxGovernor = false;
+                break;
             case R.id.checkBoxBird:
                 if (checked) {
                     checkBoxBird = true;
-                    break;
-                }
-
-
+                } else checkBoxBird = false;
+                break;
         }
     }
 
@@ -82,7 +87,4 @@ public class GameSettingsActivity extends AppCompatActivity {
                 }
         }
     }
-
-    //will go to practice mode or game mode
-
 }
