@@ -68,4 +68,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void loadSettings(View view){
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+        startActivity(intent);
+    }
+
+
 }

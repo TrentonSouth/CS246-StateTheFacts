@@ -5,15 +5,20 @@ import java.util.List;
 
 public class GameSettings {
 
-
-    private boolean capitol;
+    private boolean capital;
     private boolean rock;
     private boolean bird;
     private boolean flower;
     private boolean governor;
 
-    private GameType gameType;
+    private String checkCapital;
+    private String checkRock;
+    private String checkBird;
+    private String checkFlower;
+    private String checkGovernor;
 
+    private GameType gameType;
+    private GameSettings gameSettings;
 
     public GameSettings() {
 
@@ -21,10 +26,16 @@ public class GameSettings {
 
     public void SaveSettings(){
         // todo add my loading code
+        //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
+
+
+
+
     }
 
     public void LoadSettings(){
         // todo add my loading code
+        //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
 
         flower = true;
         rock = false;
@@ -39,11 +50,11 @@ public class GameSettings {
 
 
     public boolean getCapitol() {
-        return capitol;
+        return capital;
     }
 
-    public void setCapitol(boolean capitol) {
-        this.capitol = capitol;
+    public void setCapital(boolean capitol) {
+        this.capital = capitol;
     }
 
     public boolean getRock() {

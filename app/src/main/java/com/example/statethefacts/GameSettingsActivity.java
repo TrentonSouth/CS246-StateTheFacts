@@ -10,6 +10,8 @@ import android.widget.RadioButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameSettingsActivity extends AppCompatActivity {
+
+    private GameSettingsPresenter gameSettingsPresenter;
     boolean checkBoxCapital;
     boolean checkBoxFlower;
     boolean checkBoxRock;

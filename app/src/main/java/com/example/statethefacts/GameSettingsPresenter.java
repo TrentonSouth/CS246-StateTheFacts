@@ -25,7 +25,7 @@ public class GameSettingsPresenter {
 
     public void getSettings() {
         gameSettings.LoadSettings();
-        
+
     }
 
 
