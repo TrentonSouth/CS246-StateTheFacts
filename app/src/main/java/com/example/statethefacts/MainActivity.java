@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
@@ -41,37 +41,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void userProfile(View view) {
-        Intent intent = new Intent(this, UserProfileActivity.class);
-        startActivity(intent);
-    }
-
-    public void showChartsExample(View view) {
-        Intent intent = new Intent(this, ChartsExampleActivity.class);
-        startActivity(intent);
-    }
-
-    public void showAnswer(View view){
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
-        intent.putExtra(START_NEW_GAME, false);
-        startActivity(intent);
-    }
-
-
-    public void loadScoreCard(View view){
-        Intent intent = new Intent(this, ScoreCardActivity.class);
-        startActivity(intent);
-    }
-
-    public void showFactsList(View view) {
-        Intent intent = new Intent(this, FactsListActivity.class);
-        startActivity(intent);
-    }
-
-    public void loadSettings(View view){
-        Intent intent = new Intent(this, GameSettingsActivity.class);
-        startActivity(intent);
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.button_practiceMode:
+                break;
+            case R.id.button_gameMode:
+                break;
+            case R.id.button_history:
+                break;
+            case R.id.profile_change:
+                Intent intent1 = new Intent(this, UserProfileActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.button:
+                Intent intent2 = new Intent(this, ScoreCardActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.facts_list:
+                Intent intent3 = new Intent(this, FactsListActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.button_charts_example:
+                Intent intent4 = new Intent(this, ChartsExampleActivity.class);
+                startActivity(intent4);
+                break;
+            case R.id.button_show_answer:
+                Intent intent5 = new Intent(this, GameActivity.class);
+                intent5.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
+                intent5.putExtra(START_NEW_GAME, false);
+                startActivity(intent5);
+                break;
+            case R.id.button4:
+                Intent intent6 = new Intent(this, GameSettingsActivity.class);
+                startActivity(intent6);
+                break;
+            default:
+                break;
+        }
     }
 
     /**
