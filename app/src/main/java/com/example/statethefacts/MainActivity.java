@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,5 +74,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+    public void launchGameMode(View view) {
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+
+        // get game mode
+
+    } */
 
 }
