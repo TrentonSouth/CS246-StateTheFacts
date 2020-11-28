@@ -45,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * onClick watches the button selection to direct the user to the proper activity
+     * based on their choice.
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
