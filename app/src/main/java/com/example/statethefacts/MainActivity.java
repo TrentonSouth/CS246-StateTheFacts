@@ -12,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    // constants and variables
+    private UserProfilePresenter profile;
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
 
+    // initial method for launch
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String userName = preferences.getString("user_name", null);
         String userEMail = preferences.getString("user_email", null);
 
+        profile = new UserProfilePresenter(userName, userEMail);
         // Access field in form
-        TextView editUserWelcome = (TextView) findViewById(R.id.user_welcome);
+        TextView editUserWelcome = findViewById(R.id.user_welcome);
 
         // update field in form
         if(userName != null) {
-            String welcomeText = "Welcome back, " + userName + "!";
+            String welcomeText = "Welcome back, " + profile.getUserName() + "!";
             editUserWelcome.setText(welcomeText);
         }
 
