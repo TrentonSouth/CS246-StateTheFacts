@@ -27,6 +27,10 @@ public class UserProfilePresenter extends AppCompatActivity {
     public void setUserEMail(String userEMail) {
         profile.setUserEMail(userEMail);
     }
+
+    public UserProfilePresenter(String user, String email) {
+        profile = new UserProfile(user, email);
+    }
     // save profile information to shared preferences
     public void saveProfile(View view) {
 

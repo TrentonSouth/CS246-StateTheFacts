@@ -8,6 +8,9 @@
     <string name="button_next_question">Next Question</string>
     <string name="button_save_userPreferences">Save</string>
     <string name="button_change_profile">Change Profile</string>
+    <string name="button_practice_mode">Practice Mode</string>
+    <string name="button_game_mode">Game Mode</string>
+    <string name="button_history">History</string>
     <string name="title_activity_facts_list">ScrollingActivity</string>
     <string name="button_get_facts">Get Facts</string>
     <string name="name_hint">Enter your name</string>
@@ -21,12 +24,12 @@
 
     <string name="button_load_score_card">Load Score Card</string>
     <string name="button_play_again">Play Again</string>
-    <string name="button_history">History</string>
     <string name="button_main_menu">Main Menu</string>
     <string name="button_review_missed_facts">Review Missed Facts</string>
 
 
     <string name="text_unset_value"></string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
