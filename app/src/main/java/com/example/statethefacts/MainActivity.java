@@ -14,9 +14,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // constants and variables
     private UserProfilePresenter profile;
+    public static final String TAG = "MainActivity";
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
+    public static final String USER = "com.example.statethefacts.USER";
+    public static final String EMAIL = "com.example.statethefacts.EMAIL";
+    public static final String HASPROFILE = "com.example.statethefacts.HASPROFILE";
 
     // initial method for launch
     @Override
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView editUserWelcome = findViewById(R.id.user_welcome);
 
         // update field in form
-        if(userName != null) {
+        if(profile.getUserName() != null) {
             String welcomeText = "Welcome back, " + profile.getUserName() + "!";
             editUserWelcome.setText(welcomeText);
         }
@@ -61,6 +65,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_change:
                 Intent intent1 = new Intent(this, UserProfileActivity.class);
+                if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
+                    // log message
+                    String msg = "Profile information: " + profile.getUserName()
+                            + " , " + profile.getUserEMail();
+                    Log.d(TAG, msg);
+
+                    // add user profile to intent
+                    intent1.putExtra(HASPROFILE, "yes");
+                    intent1.putExtra(USER, profile.getUserName());
+                    intent1.putExtra(EMAIL, profile.getUserEMail());
+                } else {
+                    // no user profile
+                    intent1.putExtra(HASPROFILE, "no");
+                }
+                // start activity
                 startActivity(intent1);
                 break;
             case R.id.button:
