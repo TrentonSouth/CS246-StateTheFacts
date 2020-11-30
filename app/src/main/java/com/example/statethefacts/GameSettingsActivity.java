@@ -45,7 +45,7 @@ public class GameSettingsActivity extends AppCompatActivity {
         Log.d(TAG, msg);
 
         // set button text to match mode
-        TextView button = (TextView) findViewById(R.id.buttonStartGame);
+        TextView button = findViewById(R.id.buttonStartGame);
         button.setText(mode);
     }
 
