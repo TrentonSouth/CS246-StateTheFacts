@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // constants and variables
     private UserProfilePresenter profile;
+    private String msg;
     public static final String TAG = "MainActivity";
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
@@ -58,8 +59,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_practiceMode:
+                Intent intentPractice = new Intent(this, GameSettingsActivity.class);
+                // log information
+                msg = "User intent: Practice";
+                Log.d(TAG, msg);
+
+                // add practice to Intent
+                intentPractice.putExtra(GAME_MODE, "practice");
+
+                // start activity
+                startActivity(intentPractice);
                 break;
             case R.id.button_gameMode:
+                Intent intentGame = new Intent(this, GameSettingsActivity.class);
+                // log information
+                msg = "User intent: Game";
+                Log.d(TAG, msg);
+
+                // add game to Intent
+                intentGame.putExtra(GAME_MODE, "game");
+
+                // start activity
+                startActivity(intentGame);
                 break;
             case R.id.button_history:
                 break;
@@ -67,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent1 = new Intent(this, UserProfileActivity.class);
                 if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
                     // log message
-                    String msg = "Profile information: " + profile.getUserName()
+                    msg = "Profile information: " + profile.getUserName()
                             + " , " + profile.getUserEMail();
                     Log.d(TAG, msg);
 

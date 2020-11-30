@@ -1,17 +1,22 @@
 package com.example.statethefacts;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameSettingsActivity extends AppCompatActivity {
 
     private GameSettingsPresenter gameSettingsPresenter;
+    private boolean isGame;
+    private String mode;
+    public static final String TAG = "GameSettingActivity";
     boolean checkBoxCapital;
     boolean checkBoxFlower;
     boolean checkBoxRock;
@@ -24,6 +29,24 @@ public class GameSettingsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_settings);
+
+        // get intent - determine whether game or practice mode
+        Intent intent = getIntent();
+        String game_mode = intent.getStringExtra(MainActivity.GAME_MODE);
+        if (game_mode.equals("game")) {
+            mode = "Start Game";
+            isGame = true;
+        } else {
+            mode = "Start Practice";
+            isGame = false;
+        }
+        // log receipt of intent
+        String msg = "Received intent: " + game_mode;
+        Log.d(TAG, msg);
+
+        // set button text to match mode
+        TextView button = (TextView) findViewById(R.id.buttonStartGame);
+        button.setText(mode);
     }
 
     public void test(View view) {
