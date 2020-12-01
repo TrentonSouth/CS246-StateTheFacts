@@ -15,11 +15,16 @@ public class FactsListActivity extends AppCompatActivity {
     private boolean flowerChecked = true;
     private boolean governorChecked = true;
     private boolean rockChecked = true;
+
+    private FactsListPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facts_list);
         buildList();
+
+        presenter = new FactsListPresenter(this);
     }
 
     public void birdChange(View view) {

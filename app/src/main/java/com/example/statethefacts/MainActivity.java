@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_show_answer:
                 Intent intent5 = new Intent(this, GameActivity.class);
                 intent5.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
-                intent5.putExtra(START_NEW_GAME, false);
+                intent5.putExtra(START_NEW_GAME, true);
                 startActivity(intent5);
                 break;
             case R.id.button4:
