@@ -36,7 +36,8 @@ public class GameSettings {
         editor.putBoolean("bird", bird);
         editor.putBoolean("flower", flower);
         editor.putBoolean("governor", governor);
-        editor.putInt("GameType", gameType.ordinal());
+        editor.putBoolean("multipleChoice", multipleChoice);
+        //editor.putInt("GameType", 1);
         editor.commit();
     }
 
@@ -46,19 +47,22 @@ public class GameSettings {
 
         String loadSettings = "";
         SharedPreferences sharedPreferences = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE);
-        capital = sharedPreferences.getBoolean("capital",false);
+        capital = sharedPreferences.getBoolean("capital",true);
         rock = sharedPreferences.getBoolean("rock", false);
         bird = sharedPreferences.getBoolean("bird", false);
         flower = sharedPreferences.getBoolean("flower", false);
         governor = sharedPreferences.getBoolean("governor", false);
         //gameType = sharedPreferences.getInt("GameType", gameType.ordinal(GameType));  //will be similar to line 60
 
+        multipleChoice = sharedPreferences.getBoolean("multipleChoice", true);
 
         // convert a enum to an int and back
         ///bad, don't try this int myInt = GameType.TextEntry;
         int myGameTypeInteger = GameType.MultipleChoice.ordinal();
         GameType gameType =  GameType.values()[myGameTypeInteger];
         myGameTypeInteger = gameType.ordinal();
+
+
     }
 
 
@@ -67,8 +71,8 @@ public class GameSettings {
         return capital;
     }
 
-    public void setCapital(boolean capitol) {
-        this.capital = capitol;
+    public void setCapital(boolean capital) {
+        this.capital = capital;
     }
 
     public boolean getRock() {

@@ -17,13 +17,6 @@ public class GameSettingsActivity extends AppCompatActivity {
     private boolean isGame;
     private String mode;
     public static final String TAG = "GameSettingActivity";
-    boolean checkBoxCapital;
-    boolean checkBoxFlower;
-    boolean checkBoxRock;
-    boolean checkBoxGovernor;
-    boolean checkBoxBird;
-    boolean radioButtonMultipleChoice;
-    boolean radioButtonTextEntry;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,11 +40,38 @@ public class GameSettingsActivity extends AppCompatActivity {
         // set button text to match mode
         TextView button = findViewById(R.id.buttonStartGame);
         button.setText(mode);
+
+        GameSettings gs = new GameSettings();
+        gs.LoadSettings(this);
+
+        CheckBox capital = findViewById(R.id.checkBoxCapital);
+        capital.setChecked(gs.getCapital());
+
+        CheckBox flower = findViewById(R.id.checkBoxFlower);
+        flower.setChecked(gs.getFlower());
+
+        CheckBox rock = findViewById(R.id.checkBoxRock);
+        rock.setChecked(gs.getRock());
+
+        CheckBox governor = findViewById(R.id.checkBoxGovernor);
+        governor.setChecked(gs.getGovernor());
+
+        CheckBox bird = findViewById(R.id.checkBoxBird);
+        bird.setChecked(gs.getBird());
+
+        RadioButton multipleChoice = findViewById(R.id.radioButtonMultipleChoice);
+
+        RadioButton textEntry = findViewById(R.id.radioButtonTextEntry);
+
+        if (gs.getMultipleChoice()) {
+            multipleChoice.setChecked(true);
+            textEntry.setChecked(false);
+        } else {
+            textEntry.setChecked(true);
+            multipleChoice.setChecked(false);
+        }
     }
 
-    public void test(View view) {
-        Log.d("message: ", "just logging a message");
-    }
 
     /**
      *
@@ -85,7 +105,7 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         }
 
-        gameSettingsPresenter.saveSettings(this);
+        gs.SaveSettings(this);
     }
 
     /**
@@ -96,17 +116,21 @@ public class GameSettingsActivity extends AppCompatActivity {
         //https://developer.android.com/guide/topics/ui/controls/radiobutton
         boolean checked = ((RadioButton)view).isChecked();
 
+        GameSettings gs = new GameSettings();
+        gs.LoadSettings(this);
+
         switch (view.getId()) {
             case R.id.radioButtonMultipleChoice:
                 if (checked) {
-                    radioButtonMultipleChoice = true;
-                    break;
+                    gs.setMultipleChoice(true);
                 }
+                break;
             case R.id.radioButtonTextEntry:
                 if (checked) {
-                    radioButtonTextEntry = true;
-                    break;
+                    gs.setMultipleChoice(false);
                 }
+                break;
         }
+        gs.SaveSettings(this);
     }
 }

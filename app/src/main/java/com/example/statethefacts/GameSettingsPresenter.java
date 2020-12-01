@@ -13,7 +13,7 @@ public class GameSettingsPresenter {
     GameSettings gameSettings;
     GameSettingsActivity gameSettingsActivity;
 
-    public void saveSettings(Context context) {
+    /*public void saveSettings(Context context) {
         gameSettings.setBird(gameSettingsActivity.checkBoxBird);
         gameSettings.setCapital(gameSettingsActivity.checkBoxCapital);
         gameSettings.setFlower(gameSettingsActivity.checkBoxFlower);
@@ -31,7 +31,7 @@ public class GameSettingsPresenter {
         gameSettingsActivity.checkBoxFlower = gameSettings.getFlower();
         gameSettingsActivity.checkBoxGovernor = gameSettings.getGovernor();
         gameSettingsActivity.checkBoxRock = gameSettings.getRock();
-    }
+    }*/
 
 
 }
