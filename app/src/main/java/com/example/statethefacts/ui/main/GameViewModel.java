@@ -18,10 +18,12 @@ import com.example.statethefacts.QuestionsType;
 import com.example.statethefacts.State;
 
 import java.util.List;
+import java.util.Random;
 
 public class GameViewModel extends AndroidViewModel {
     private GameQuestion question;
     private List<State> states;
+    private List<State> allStates;
     private GameResult gameResult;
     private GameAnswer lastAnswer;
 
@@ -31,8 +33,8 @@ public class GameViewModel extends AndroidViewModel {
         GetFacts gf = new GetFacts();
         Facts facts = gf.Fetch(getApplication().getApplicationContext());
         states = facts.getStates();
-
         gameResult = new GameResult();
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -69,4 +71,15 @@ public class GameViewModel extends AndroidViewModel {
     public void saveGame() {
         gameResult.SaveCurrentGame(getApplication().getApplicationContext());
     }
+
+//    private void getStatesForGame(int stateCount){
+//        int statesToKeep = states.size()-stateCount;
+//        Random random = new Random();
+//        for(int i=0; i<stateCount; i++){
+//            int index = random.nextInt(states.size());
+//            index;
+//
+//        }
+//    }
+
 }
