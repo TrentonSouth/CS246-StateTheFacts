@@ -1,8 +1,10 @@
 package com.example.statethefacts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -54,5 +56,27 @@ public class UserProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        // get intent
+        if (!MainActivity.HASPROFILE.contains("no")) {
+            Intent intent1 = getIntent();
+            String user = intent1.getStringExtra(MainActivity.USER);
+            String email = intent1.getStringExtra(MainActivity.EMAIL);
+
+            profile = new UserProfilePresenter(user, email);
+
+            // set user and email EditText fields to saved profile
+            EditText editUser = (EditText) findViewById(R.id.name_entry);
+            EditText editEmail = (EditText) findViewById(R.id.email_entry);
+
+            // log receipt of intent
+            String msg = "Received intent with " + profile.getUserName()
+                    + ", " + profile.getUserEMail();
+            Log.d(TAG, msg);
+
+            // display fields
+            editUser.setText(profile.getUserName());
+            editEmail.setText(profile.getUserEMail());
+        }
     }
 }
