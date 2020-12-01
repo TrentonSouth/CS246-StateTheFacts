@@ -39,33 +39,30 @@ public class GameSettingsActivity extends AppCompatActivity {
         boolean checked = ((CheckBox) view).isChecked();
         Log.d("message: ", "testing to see if we got here");
 
+
+        GameSettings gs = new GameSettings();
+        gs.LoadSettings(this);
+
         switch (view.getId()) {
             case R.id.checkBoxCapital:
-                if (checked) {
-                    checkBoxCapital = true;
-                } else checkBoxCapital = false;
+                gs.setCapital(checked);
                 break;
             case R.id.checkBoxFlower:
-                if (checked) {
-                    checkBoxFlower = true;
-                } else checkBoxFlower = false;
+                gs.setFlower(checked);
                 break;
             case R.id.checkBoxRock:
-                if (checked) {
-                    checkBoxRock = true;
-                } else checkBoxRock = false;
+                gs.setRock(checked);
                 break;
             case R.id.checkBoxGovernor:
-                if (checked) {
-                    checkBoxGovernor = true;
-                } else checkBoxGovernor = false;
+                gs.setGovernor(checked);
                 break;
             case R.id.checkBoxBird:
-                if (checked) {
-                    checkBoxBird = true;
-                } else checkBoxBird = false;
+                gs.setBird(checked);
                 break;
+
         }
+
+        gameSettingsPresenter.saveSettings(this);
     }
 
     /**

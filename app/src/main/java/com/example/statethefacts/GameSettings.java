@@ -1,6 +1,9 @@
 
 package com.example.statethefacts;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.List;
 
 public class GameSettings {
@@ -11,36 +14,47 @@ public class GameSettings {
     private boolean flower;
     private boolean governor;
 
-    private String checkCapital;
-    private String checkRock;
-    private String checkBird;
-    private String checkFlower;
-    private String checkGovernor;
+    private boolean multipleChoice;
 
     private GameType gameType;
     private GameSettings gameSettings;
+    private GameSettingsPresenter gameSettingsPresenter;
 
     public GameSettings() {
 
     }
 
-    public void SaveSettings(){
-        // todo add my loading code
+    public void SaveSettings(Context context){
         //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
+        //https://developer.android.com/training/data-storage/shared-preferences
+        //https://gist.github.com/yochiro/de99920a9ad3ab37c88c63e3409bdaf4
 
-
-
-
+        SharedPreferences sharedPreferences = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("capital", capital);
+        editor.putBoolean("rock", rock);
+        editor.putBoolean("bird", bird);
+        editor.putBoolean("flower", flower);
+        editor.putBoolean("governor", governor);
+        editor.putInt("GameType", gameType.ordinal());
+        editor.commit();
     }
 
-    public void LoadSettings(){
+    public void LoadSettings(Context context){
         // todo add my loading code
         //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
 
-        flower = true;
-        rock = false;
+        String loadSettings = "";
+        SharedPreferences sharedPreferences = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE);
+        capital = sharedPreferences.getBoolean("capital",false);
+        rock = sharedPreferences.getBoolean("rock", false);
+        bird = sharedPreferences.getBoolean("bird", false);
+        flower = sharedPreferences.getBoolean("flower", false);
+        governor = sharedPreferences.getBoolean("governor", false);
+        //gameType = sharedPreferences.getInt("GameType", gameType.ordinal(GameType));  //will be similar to line 60
 
-        // convert a enum to and int and back
+
+        // convert a enum to an int and back
         ///bad, don't try this int myInt = GameType.TextEntry;
         int myGameTypeInteger = GameType.MultipleChoice.ordinal();
         GameType gameType =  GameType.values()[myGameTypeInteger];
@@ -87,6 +101,14 @@ public class GameSettings {
 
     public void setGovernor(boolean governor) {
         this.governor = governor;
+    }
+
+    public void setMultipleChoice(boolean multipleChoice) {
+        this.multipleChoice = multipleChoice;
+    }
+
+    public boolean getMultipleChoice() {
+        return multipleChoice;
     }
 
     //use for GamePreferences

@@ -13,18 +13,18 @@ public class GameSettingsPresenter {
     GameSettings gameSettings;
     GameSettingsActivity gameSettingsActivity;
 
-    public void saveSettings() {
+    public void saveSettings(Context context) {
         gameSettings.setBird(gameSettingsActivity.checkBoxBird);
         gameSettings.setCapital(gameSettingsActivity.checkBoxCapital);
         gameSettings.setFlower(gameSettingsActivity.checkBoxFlower);
         gameSettings.setGovernor(gameSettingsActivity.checkBoxGovernor);
         gameSettings.setRock(gameSettingsActivity.checkBoxRock);
 
-        gameSettings.SaveSettings();
+        gameSettings.SaveSettings(context);
     }
 
-    public void getSettings() {
-        gameSettings.LoadSettings();
+    public void getSettings(Context context) {
+        gameSettings.LoadSettings(context);
 
         gameSettingsActivity.checkBoxBird = gameSettings.getBird();
         gameSettingsActivity.checkBoxCapital = gameSettings.getCapital();
