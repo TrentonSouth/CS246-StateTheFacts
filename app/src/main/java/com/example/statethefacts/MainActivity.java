@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // constants and variables
     private UserProfilePresenter profile;
     private String msg;
+    private Intent intent;
     public static final String TAG = "MainActivity";
     public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
@@ -59,33 +60,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_practiceMode:
-                Intent intentPractice = new Intent(this, GameSettingsActivity.class);
+                intent = new Intent(this, FactsListActivity.class);
                 // log information
                 msg = "User intent: Practice";
                 Log.d(TAG, msg);
 
                 // add practice to Intent
-                intentPractice.putExtra(GAME_MODE, "practice");
+                intent.putExtra(GAME_MODE, "practice");
 
                 // start activity
-                startActivity(intentPractice);
+                startActivity(intent);
                 break;
             case R.id.button_gameMode:
-                Intent intentGame = new Intent(this, GameSettingsActivity.class);
+                intent = new Intent(this, GameSettingsActivity.class);
                 // log information
                 msg = "User intent: Game";
                 Log.d(TAG, msg);
 
                 // add game to Intent
-                intentGame.putExtra(GAME_MODE, "game");
+                intent.putExtra(GAME_MODE, "game");
 
                 // start activity
-                startActivity(intentGame);
+                startActivity(intent);
                 break;
             case R.id.button_history:
                 break;
             case R.id.profile_change:
-                Intent intent1 = new Intent(this, UserProfileActivity.class);
+                intent = new Intent(this, UserProfileActivity.class);
                 if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
                     // log message
                     msg = "Profile information: " + profile.getUserName()
@@ -93,49 +94,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d(TAG, msg);
 
                     // add user profile to intent
-                    intent1.putExtra(HASPROFILE, "yes");
-                    intent1.putExtra(USER, profile.getUserName());
-                    intent1.putExtra(EMAIL, profile.getUserEMail());
+                    intent.putExtra(HASPROFILE, "yes");
+                    intent.putExtra(USER, profile.getUserName());
+                    intent.putExtra(EMAIL, profile.getUserEMail());
                 } else {
                     // no user profile
-                    intent1.putExtra(HASPROFILE, "no");
+                    intent.putExtra(HASPROFILE, "no");
                 }
                 // start activity
-                startActivity(intent1);
+                startActivity(intent);
                 break;
             case R.id.button:
-                Intent intent2 = new Intent(this, ScoreCardActivity.class);
-                startActivity(intent2);
-                break;
-            case R.id.facts_list:
-                Intent intent3 = new Intent(this, FactsListActivity.class);
-                startActivity(intent3);
+                intent = new Intent(this, ScoreCardActivity.class);
+                startActivity(intent);
                 break;
             case R.id.button_charts_example:
-                Intent intent4 = new Intent(this, ChartsExampleActivity.class);
-                startActivity(intent4);
+                intent = new Intent(this, ChartsExampleActivity.class);
+                startActivity(intent);
                 break;
             case R.id.button_show_answer:
-                Intent intent5 = new Intent(this, GameActivity.class);
-                intent5.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
-                intent5.putExtra(START_NEW_GAME, true);
-                startActivity(intent5);
-                break;
-            case R.id.button4:
-                Intent intent6 = new Intent(this, GameSettingsActivity.class);
-                startActivity(intent6);
+                intent = new Intent(this, GameActivity.class);
+                intent.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
+                intent.putExtra(START_NEW_GAME, true);
+                startActivity(intent);
                 break;
             default:
                 break;
         }
     }
 
-    /**
-    public void launchGameMode(View view) {
-        Intent intent = new Intent(this, GameSettingsActivity.class);
-
-        // get game mode
-
-    } */
 
 }
