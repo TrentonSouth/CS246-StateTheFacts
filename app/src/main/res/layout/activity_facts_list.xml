@@ -28,7 +28,6 @@
         <TableRow
             android:layout_width="fill_parent"
             android:layout_height="match_parent">
-
             <CheckBox
                 android:id="@+id/bird"
                 android:layout_width="wrap_content"
@@ -38,7 +37,7 @@
                 android:text="Bird" />
 
             <CheckBox
-                android:id="@+id/captial"
+                android:id="@+id/capital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -46,19 +45,12 @@
                 android:text="Captial" />
 
 
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <CheckBox
-                android:id="@+id/flower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="flowerChange"
-                android:text="Flower" />
+            android:layout_height="match_parent">
 
             <CheckBox
                 android:id="@+id/rock"
@@ -66,13 +58,19 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:onClick="rockChange"
-                android:text="Rock" />
-
+                android:text="Rock"
+                />
+            <CheckBox
+                android:id="@+id/flower"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:onClick="flowerChange"
+                android:text="Flower" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-
             <CheckBox
                 android:id="@+id/governor"
                 android:layout_width="wrap_content"
@@ -80,18 +78,21 @@
                 android:checked="true"
                 android:onClick="governorChange"
                 android:text="Governor" />
-
-
         </TableRow>
-
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <TextView
+                android:id="@+id/txtSpacer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="                        "/>
+            <TextView
                 android:id="@+id/txtFacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
         </TableRow>
 
         <TableRow
