@@ -19,7 +19,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".ChartsExampleActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity android:name=".ScoreCardActivity"/>
         <activity android:name=".PracticeModeEndingCardActivity"/>
         <activity android:name=".GameSettingsActivity"/>

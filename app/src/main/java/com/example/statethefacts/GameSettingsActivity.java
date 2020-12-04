@@ -36,7 +36,6 @@ public class GameSettingsActivity extends AppCompatActivity {
 
     public void onClickStartGame(View view) {
         Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra(MainActivity.GAMETYPE, gameSettingsPresenter.gameSettings.getGameType());
         intent.putExtra(MainActivity.START_NEW_GAME, true);
         startActivity(intent);
     }

@@ -2,23 +2,22 @@ package com.example.statethefacts;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.statethefacts.ui.main.CardAnswerFragment;
-import com.example.statethefacts.ui.main.CardMultipleChoiceFragment;
-import com.example.statethefacts.ui.main.CardTextEntryFragment;
+import com.example.statethefacts.ui.main.GameCardFactory;
 import com.example.statethefacts.ui.main.GameViewModel;
 
 public class GameActivity extends AppCompatActivity {
 
+    public static final String GAME_ID = "com.example.statethefacts.GAME_ID";
+
     GameViewModel viewModel;
+    GameCardFactory cardFactory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +25,26 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.card_flipper_activity);
 
         Intent intent  = getIntent();
-        int gameTypeValue = intent.getIntExtra(MainActivity.GAMETYPE, GameType.MultipleChoice.ordinal());
-        GameType gameType = GameType.values()[gameTypeValue];
-
         boolean startNewGame = intent.getBooleanExtra(MainActivity.START_NEW_GAME,true);
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         if(startNewGame)
-            viewModel.StartNewGame(gameType);
+            viewModel.StartNewGame();
         else
             viewModel.ResumeGame();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container, new CardTextEntryFragment(viewModel))
-                    .commit();
+        cardFactory = new GameCardFactory(viewModel);
+
+
+        try {
+            if (savedInstanceState == null) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, cardFactory.getGameCard(CardType.Question))
+                        .commit();
+            }
+        }catch(ClassNotFoundException ex){
+            Log.d("Error", "onCreate: Error Generating Game Card: "+ex.getMessage());
         }
     }
 
@@ -56,20 +59,16 @@ public class GameActivity extends AppCompatActivity {
     private boolean showingBack;
 
     public void flipCard() {
-        Fragment nextCard;
-        if (showingBack) {
-            switch (viewModel.getGameType()) {
-                case MultipleChoice:
-                    nextCard = new CardMultipleChoiceFragment(viewModel);
-                    break;
-                case TextEntry:
-                    nextCard = new CardTextEntryFragment(viewModel);
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid Game Type: " + viewModel.getGameType().toString());
+        Fragment nextCard = null;
+
+        try {
+            if (showingBack) {
+                nextCard = cardFactory.getGameCard(CardType.Question);
+            } else {
+                nextCard = cardFactory.getGameCard(CardType.Answer);
             }
-        } else {
-            nextCard = new CardAnswerFragment(viewModel);
+        } catch (ClassNotFoundException ex){
+            Log.d("Error", "onCreate: Error Generating Game Card: "+ex.getMessage());
         }
 
         showingBack = !showingBack;
@@ -86,36 +85,20 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void submitAnswer(View view) {
-
-        String answer = "";
-        switch (viewModel.getGameType()) {
-            case MultipleChoice:
-                RadioGroup radioGroup = findViewById(R.id.radioGroup_answers);
-                int selectedId = radioGroup.getCheckedRadioButtonId();
-                RadioButton selectedRadioButton = findViewById(selectedId);
-                if (selectedRadioButton == null)
-                    return;
-
-                answer = selectedRadioButton.getText().toString();
-                break;
-
-            case TextEntry:
-                EditText editTextAnswer = findViewById(R.id.editTextAnswer);
-                if (editTextAnswer == null)
-                    return;
-
-                answer = editTextAnswer.getText().toString();
-                break;
-
-            default:
-                throw new IllegalArgumentException("Invalid Game Type: " + viewModel.getGameType().toString());
-        }
-
-        viewModel.submitAnswer(answer);
+        viewModel.submitAnswer(this);
         flipCard();
     }
 
     public void nextQuestion(View view) {
-        flipCard();
+        if(viewModel.hasMoreStates())
+        {
+            flipCard();
+            return;
+        }
+
+        viewModel.endGame(this);
+        Intent intent = new Intent(this, ScoreCardActivity.class);
+        intent.putExtra(GAME_ID, viewModel.getGameId().toString());
+        startActivity(intent);
     }
 }

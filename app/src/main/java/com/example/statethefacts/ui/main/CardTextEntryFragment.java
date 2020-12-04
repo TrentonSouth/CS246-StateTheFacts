@@ -23,7 +23,7 @@ public class CardTextEntryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        GameQuestion question = viewModel.getNextQuestion(QuestionsType.Flower);
+        GameQuestion question = viewModel.getNextQuestion();
 
         View view = inflater.inflate(R.layout.layout_card_question_text_entry, container, false);
         TextView textViewQuestion = view.findViewById(R.id.textView_question);

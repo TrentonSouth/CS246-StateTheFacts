@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_history:
+                intent = new Intent(this, HistoryActivity.class);
+                startActivity(intent);
                 break;
             case R.id.profile_change:
                 intent = new Intent(this, UserProfileActivity.class);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.button_charts_example:
-                intent = new Intent(this, ChartsExampleActivity.class);
+                intent = new Intent(this, HistoryActivity.class);
                 startActivity(intent);
                 break;
             case R.id.button_show_answer:

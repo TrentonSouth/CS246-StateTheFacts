@@ -24,7 +24,7 @@ public class CardMultipleChoiceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        GameQuestion question = viewModel.getNextQuestion(QuestionsType.Flower);
+        GameQuestion question = viewModel.getNextQuestion();
 
         View view = inflater.inflate(R.layout.layout_card_question, container, false);
         TextView textViewQuestion = view.findViewById(R.id.textView_question);

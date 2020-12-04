@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GameQuestion {
-    private String state = "";
+    private String stateName = "";
     private QuestionsType questionType;
     private String question = "";
     private State answer = null;
@@ -31,16 +31,20 @@ public class GameQuestion {
         this.questionType = questionType;
     }
 
-    public void generate(String state, GameType gameType) {
-        if(!states.containsKey(state))
-            throw new IllegalArgumentException("Invalid state name: "+ state);
+    public void generate(List<State> states, GameType gameType) {
 
-        setupQuestion(state);
+        State nextState = states.get(states.size()-1);
+        states.remove(nextState);
+        String stateName = nextState.state;
 
-        State selectedState = states.get(state);
 
-        this.state = state;
-        this.answer = selectedState;
+        if(!this.states.containsKey(stateName))
+            throw new IllegalArgumentException("Invalid state name: "+ this.stateName);
+
+        setupQuestion(stateName);
+
+        this.stateName = stateName;
+        this.answer = nextState;
 
         if(gameType == GameType.TextEntry)
             return;
@@ -164,8 +168,8 @@ public class GameQuestion {
         }
     }
 
-    public String getState() {
-        return state;
+    public String getStateName() {
+        return stateName;
     }
 
     public String getQuestion(){
