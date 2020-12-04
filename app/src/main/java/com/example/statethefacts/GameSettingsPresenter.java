@@ -1,6 +1,5 @@
 package com.example.statethefacts;
 
-
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -12,12 +11,20 @@ public class GameSettingsPresenter {
     GameSettings gameSettings;
     GameSettingsActivity activity;
 
-
+    /**
+     * Construct the GameSettingsPresenter which extends the Activity class
+     * @param activity
+     */
     public GameSettingsPresenter(GameSettingsActivity activity) {
         this.activity = activity;
         gameSettings = new GameSettings();
     }
 
+    /**
+     * the loadSettings Method
+     * Purpose: pass the whether a checkbox has been selected from the GameSettingsActivity to the GameSettings class
+     * @param mode
+     */
     public void loadSettings(String mode) {
         // set button text to match mode
         TextView button = activity.findViewById(R.id.buttonStartGame);
@@ -53,6 +60,11 @@ public class GameSettingsPresenter {
         }
     }
 
+    /**
+     *the updateFactTypes Method
+     * Purpose: pass which fact types were updated by the user from the GameSettingsActivity to the GameSettings class
+     * @param view
+     */
     public void updateFactTypes(View view) {
         //https://developer.android.com/guide/topics/ui/controls/checkbox#:~:text=To%20define%20the%20click%20event,then%20implement%20the%20corresponding%20method.
         boolean checked = ((CheckBox) view).isChecked();
@@ -78,7 +90,11 @@ public class GameSettingsPresenter {
         gameSettings.SaveSettings(activity);
     }
 
-
+    /**
+     * the updateGameType Method
+     * Purpose: pass which game type was chosen by the user from the GameSettingsActivity to the GameSettings class
+     * @param view
+     */
     public void updateGameType(View view) {
         //https://developer.android.com/guide/topics/ui/controls/radiobutton
         boolean checked = ((RadioButton)view).isChecked();
