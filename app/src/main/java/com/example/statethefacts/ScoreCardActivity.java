@@ -32,11 +32,13 @@ public class ScoreCardActivity extends AppCompatActivity {
             if(a.HasCorrectAnswer())
                 qRight += 1;
         }
-        float score = qRight / qCount;
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        float score = qRight / qCount * 100;
+        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
         String scoreAsString = decimalFormat.format(score);
         TextView txtScore = this.findViewById(R.id.txtScore);
-        txtScore.setText(txtScore.getText());
+        if (score == 100.0);
+            scoreAsString = "100";
+        txtScore.setText(scoreAsString + "%");
     }
     public void loadHistory(View view) {
         //Intent intent = new Intent(this, HistoryActivity.class);
