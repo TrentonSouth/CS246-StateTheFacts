@@ -36,8 +36,8 @@ public class GameSettings {
         editor.putBoolean("bird", bird);
         editor.putBoolean("flower", flower);
         editor.putBoolean("governor", governor);
-        editor.putBoolean("multipleChoice", multipleChoice);
-        //editor.putInt("GameType", 1);
+        //editor.putBoolean("multipleChoice", multipleChoice);
+        editor.putInt("GameType", gameType.ordinal());
         editor.commit();
     }
 
@@ -52,15 +52,15 @@ public class GameSettings {
         bird = sharedPreferences.getBoolean("bird", false);
         flower = sharedPreferences.getBoolean("flower", false);
         governor = sharedPreferences.getBoolean("governor", false);
-        //gameType = sharedPreferences.getInt("GameType", gameType.ordinal(GameType));  //will be similar to line 60
+        gameType = GameType.values()[sharedPreferences.getInt("GameType", GameType.MultipleChoice.ordinal())];
 
-        multipleChoice = sharedPreferences.getBoolean("multipleChoice", true);
+        //multipleChoice = sharedPreferences.getBoolean("multipleChoice", true);
 
         // convert a enum to an int and back
         ///bad, don't try this int myInt = GameType.TextEntry;
-        int myGameTypeInteger = GameType.MultipleChoice.ordinal();
-        GameType gameType =  GameType.values()[myGameTypeInteger];
-        myGameTypeInteger = gameType.ordinal();
+//        int myGameTypeInteger = GameType.MultipleChoice.ordinal();
+//        GameType gameType =  GameType.values()[myGameTypeInteger];
+//        myGameTypeInteger = gameType.ordinal();
 
 
     }
@@ -107,23 +107,23 @@ public class GameSettings {
         this.governor = governor;
     }
 
-    public void setMultipleChoice(boolean multipleChoice) {
+    /*public void setMultipleChoice(boolean multipleChoice) {
         this.multipleChoice = multipleChoice;
-    }
+    }*/
 
-    public boolean getMultipleChoice() {
+    /*public boolean getMultipleChoice() {
         return multipleChoice;
-    }
+    }*/
 
-    //use for GamePreferences
+    /*use for GamePreferences
     public int getGameTypeInt() {
         return gameType.ordinal();
-    }
+    }*/
 
-    //use for GamePreferences
+    /*use for GamePreferences
     public void setGameTypeInt(int gameType) {
         this.gameType = GameType.values()[gameType];
-    }
+    }*/
 
     //use for Game
     public GameType getGameType() {
