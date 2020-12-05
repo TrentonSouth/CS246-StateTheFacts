@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".MissedQuestionsActivity">
 
+    <ScrollView
+        android:id="@+id/svFacts"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="vertical"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="119dp">
+
+
+            <TextView
+                android:id="@+id/txtMQHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/missed_questions"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtMissedQuestions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/mainMenu"
+                    android:layout_width="238dp"
+                    android:layout_height="wrap_content"
+                    android:onClick="mainMenu"
+                    android:text="@string/main_menu" />
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

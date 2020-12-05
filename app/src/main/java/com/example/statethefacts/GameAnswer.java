@@ -23,7 +23,29 @@ public class GameAnswer {
         return correctAnswer.equalsIgnoreCase(submittedAnswer);
     }
 
+    public String getState() {
+        return state;
+    }
 
+    public String getQuestionType() {
+        switch(questionsType) {
+            case Bird:
+                return "Bird";
+            case Rock:
+                return "Rock";
+            case Flower:
+                return "Flower";
+            case Capital:
+                return "Capital";
+            case Governor:
+                return "Governor";
+        }
+        return "";
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
 
     public String getSubmittedAnswer() {
         return submittedAnswer;
