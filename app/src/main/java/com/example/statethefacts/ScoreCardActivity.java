@@ -72,8 +72,8 @@ public class ScoreCardActivity extends AppCompatActivity {
     }
 
     public void loadHistory(View view) {
-        //Intent intent = new Intent(this, HistoryActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
     }
     public void loadMissedQuestions(View view) {
         Intent intent = new Intent(this, MissedQuestionsActivity.class);
