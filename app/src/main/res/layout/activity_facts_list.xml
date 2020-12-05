@@ -7,7 +7,6 @@
     android:layout_height="fill_parent"
     tools:context=".FactsListActivity">
 
-
     <ScrollView
         android:id="@+id/svFacts"
         android:layout_width="fill_parent"
@@ -18,96 +17,108 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="60dp"
-        tools:layout_editor_absoluteY="119dp">
-
-        <TableRow
+        <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="match_parent">
-            <CheckBox
-                android:id="@+id/bird"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="birdChange"
-                android:text="Bird" />
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="60dp"
+            tools:layout_editor_absoluteY="119dp">
 
-            <CheckBox
-                android:id="@+id/capital"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="capitalChange"
-                android:text="Captial" />
-
-
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <CheckBox
-                android:id="@+id/rock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="rockChange"
-                android:text="Rock"
-                />
-            <CheckBox
-                android:id="@+id/flower"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="flowerChange"
-                android:text="Flower" />
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-            <CheckBox
-                android:id="@+id/governor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="governorChange"
-                android:text="Governor" />
-        </TableRow>
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/txtMQHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="                        "/>
-            <TextView
-                android:id="@+id/txtFacts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <Button
-                android:id="@+id/mainMenu"
+            <TableRow
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:onClick="mainMenu"
-                android:text="Main Menu" />
-        </TableRow>
+                android:layout_height="wrap_content">
 
-    </TableLayout>
+                <CheckBox
+                    android:id="@+id/bird"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="birdChange"
+                    android:text="Bird" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/capital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="capitalChange"
+                    android:text="Capital" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/flower"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="flowerChange"
+                    android:text="Flower" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/governor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="governorChange"
+                    android:text="Governor" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/rock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="rockChange"
+                    android:text="Rock" />
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/txtMQHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                        " />
+
+                <TextView
+                    android:id="@+id/txtFacts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/mainMenu"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="mainMenu"
+                    android:text="Main Menu" />
+            </TableRow>
+
+        </TableLayout>
 
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

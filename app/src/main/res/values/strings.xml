@@ -25,7 +25,7 @@
     <string name="label_name">Name</string>
     <string name="label_email">Email</string>
     <string name="userProfile_title">User Information</string>
-    <string name="user_name">Please update profile</string>
+    <string name="user_name">Please update your profile</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_missed_answers">ScrollingActivity</string>
 

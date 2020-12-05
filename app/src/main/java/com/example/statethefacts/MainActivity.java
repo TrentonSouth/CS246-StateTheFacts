@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //create the 3 dots (ellipsis) on right side of the app in the top bar
+    //https://www.youtube.com/watch?v=kknBxoCOYXI
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //makes the list found from the 3 dots (ellipsis) on right side of the app clickable
+    //https://www.youtube.com/watch?v=zwabHRv2taA
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.profile) {
