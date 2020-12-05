@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">State The Facts</string>
+
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="history">Game History</string>
+    <string name="score_card">Score Card</string>
+    <string name="learn_mode">Learn Mode</string>
+    <string name="play_game">Play Game</string>
+
     <string name="app_title">State The Facts</string>
     <string name="button_charts_example">Charts Example</string>
     <string name="button_start_game">Start Game</string>

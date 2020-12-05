@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,9 +49,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String welcomeText = "Welcome back, " + profile.getUserName() + "!";
             editUserWelcome.setText(welcomeText);
         }
-
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    
     /**
      * onClick watches the button selection to direct the user to the proper activity
      * based on their choice.
