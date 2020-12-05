@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.view.Menu;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -51,14 +54,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    //create the 3 dots (ellipsis) on right side of the app in the top bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
-    
+    //makes the list found from the 3 dots (ellipsis) on right side of the app clickable
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.profile) {
+            intent = new Intent(this, UserProfileActivity.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.history) {
+            intent = new Intent(this, HistoryActivity.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.score_card) {
+            intent = new Intent(this, ScoreCardActivity.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.learn_mode) {
+            intent = new Intent(this, FactsListActivity.class);
+            startActivity(intent);
+        } else if (item.getItemId() == R.id.game_mode) {
+            intent = new Intent(this, GameSettingsActivity.class);
+            intent.putExtra(GAME_MODE, "game");
+            startActivity(intent);
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
     /**
      * onClick watches the button selection to direct the user to the proper activity
      * based on their choice.
