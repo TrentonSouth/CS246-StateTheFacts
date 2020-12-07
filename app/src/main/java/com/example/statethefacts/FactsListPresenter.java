@@ -13,19 +13,13 @@ public class FactsListPresenter {
 
 
     FactsListActivity activity;
-    public String LoadFacts(Context ctx) {
-        String strFacts = "";
-        GetFacts gf = new GetFacts();
-        Facts facts = gf.Fetch(ctx);
-        return strFacts;
-    }
 
     public FactsListPresenter(FactsListActivity activity){
         this.activity = activity;
 
     }
 
-    private void buildList() {
+    public String buildList() {
 
 
         TextView txtFacts = (TextView) activity.findViewById(R.id.txtFacts);
@@ -48,6 +42,22 @@ public class FactsListPresenter {
             strFacts += "\n";
 
         }
-        txtFacts.setText(strFacts);
+        return strFacts;
+    }
+
+    public void setBirdChecked(boolean status) {
+        birdChecked = status;
+    }
+    public void setCapitalChecked(boolean status) {
+        capitalChecked = status;
+    }
+    public void setFlowerChecked(boolean status) {
+        flowerChecked = status;
+    }
+    public void setGovernorChecked(boolean status) {
+        governorChecked = status;
+    }
+    public void setRockChecked(boolean status) {
+        rockChecked = status;
     }
 }
