@@ -43,6 +43,16 @@ public class HistoryPresenter {
         setupChart();
     }
 
+    public double getAverageScoreEmail() {
+        getAverageScore();
+        return averageScore;
+    }
+
+    public int getPlayAttemptsEmail() {
+        getPlayAttempts();
+        return playAttempts;
+    }
+
     private void setupChart() {
         LineChart chart = activity.findViewById(R.id.chart);
 
