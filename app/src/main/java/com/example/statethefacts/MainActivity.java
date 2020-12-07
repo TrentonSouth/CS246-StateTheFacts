@@ -54,18 +54,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    //create the 3 dots (ellipsis) on right side of the app in the top bar
-    //https://www.youtube.com/watch?v=kknBxoCOYXI
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
-    //makes the list found from the 3 dots (ellipsis) on right side of the app clickable
-    //https://www.youtube.com/watch?v=zwabHRv2taA
+    /**
+     * The onOptionsItemSelected Method
+     * Purpose: makes the list found from the 3 dots (ellipsis) on right side of the app clickable
+     * @param item
+     * @return boolean as true
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //https://www.youtube.com/watch?v=zwabHRv2taA
         if (item.getItemId() == R.id.profile) {
             intent = new Intent(this, UserProfileActivity.class);
             startActivity(intent);
