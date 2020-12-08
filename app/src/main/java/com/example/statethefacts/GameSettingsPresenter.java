@@ -30,7 +30,7 @@ public class GameSettingsPresenter {
         TextView button = activity.findViewById(R.id.buttonStartGame);
         button.setText(mode);
 
-        gameSettings.LoadSettings(activity);
+        gameSettings.loadGameSettings(activity);
 
         CheckBox capital = activity.findViewById(R.id.checkBoxCapital);
         capital.setChecked(gameSettings.getCapital());
@@ -87,7 +87,7 @@ public class GameSettingsPresenter {
                 break;
 
         }
-        gameSettings.SaveSettings(activity);
+        gameSettings.saveGameSettings(activity);
     }
 
     /**
@@ -111,6 +111,6 @@ public class GameSettingsPresenter {
                 }
                 break;
         }
-        gameSettings.SaveSettings(activity);
+        gameSettings.saveGameSettings(activity);
     }
 }

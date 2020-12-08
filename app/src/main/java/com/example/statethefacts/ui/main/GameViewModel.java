@@ -44,7 +44,7 @@ public class GameViewModel extends AndroidViewModel {
         gameResult = new GameResult();
 
         gameSettings = new GameSettings();
-        gameSettings.LoadSettings(application);
+        gameSettings.loadGameSettings(application);
         gameType = gameSettings.getGameType();
 
     }

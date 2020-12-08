@@ -23,11 +23,11 @@ public class GameSettings {
     }
 
     /**
-     * the SaveSettings Method
+     * the saveGameSettings Method
      * Purpose: to save capital, rock, bird, flower, governor, and gameType as a Boolean
      * @param context
      */
-    public void SaveSettings(Context context){
+    public void saveGameSettings(Context context){
         //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
         //https://developer.android.com/training/data-storage/shared-preferences
         //https://gist.github.com/yochiro/de99920a9ad3ab37c88c63e3409bdaf4
@@ -44,11 +44,11 @@ public class GameSettings {
     }
 
     /**
-     * the LoadSettings Method
+     * the loadGameSettings Method
      * Purpose: to get the boolean of capital, rock, bird, flower, governor, and gameType
      * @param context
      */
-    public void LoadSettings(Context context){
+    public void loadGameSettings(Context context){
         //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
         SharedPreferences sharedPreferences = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE);
         capital = sharedPreferences.getBoolean("capital",true);
