@@ -153,20 +153,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // start activity
                 startActivity(intent);
                 break;
-            case R.id.button:
-                intent = new Intent(this, ScoreCardActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.button_charts_example:
-                intent = new Intent(this, HistoryActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.button_show_answer:
-                intent = new Intent(this, GameActivity.class);
-                intent.putExtra(GAMETYPE, GameType.TextEntry.ordinal());
-                intent.putExtra(START_NEW_GAME, true);
-                startActivity(intent);
-                break;
             default:
                 break;
         }
