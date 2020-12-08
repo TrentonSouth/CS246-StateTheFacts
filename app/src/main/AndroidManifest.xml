@@ -21,9 +21,8 @@
         </activity>
         <activity android:name=".HistoryActivity" />
         <activity android:name=".ScoreCardActivity"/>
-        <activity android:name=".PracticeModeEndingCardActivity"/>
         <activity android:name=".GameSettingsActivity"/>
-        <activity android:name=".PracticeModeReviewActivity"/> <!-- change back to MainActivity for testing-->
+        <!-- change back to MainActivity for testing-->
         <activity android:name=".MainActivity"> <!-- change back to GameSettingsActivity for testing-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
