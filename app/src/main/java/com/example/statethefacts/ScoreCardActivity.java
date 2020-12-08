@@ -15,61 +15,22 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class ScoreCardActivity extends AppCompatActivity {
+    private ScoreCardPresenter presenter;
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score_card);
-        // Get the current game results
-        GameResult gr = new GameResult().loadCurrentGame(this);
-        float score = getScore(gr);
-
-        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
-        String scoreAsString = decimalFormat.format(score);
+        presenter = new ScoreCardPresenter(this);
+        presenter.calculateScores(this);
         TextView txtScore = this.findViewById(R.id.txtScore);
-
-        if (score == 100.0) {
-            scoreAsString = "100";
-        }
-        txtScore.setText(scoreAsString + "%");
-        List<GameResult>  loag = gr.getAllGames(this);
-        int gCount = 0;
-        float total = 0;
-        for (GameResult g : loag) {
-            gCount = gCount + 1;
-            total += getScore(g);
-        }
-        float totalScore;
-        if (gCount > 0) {
-            totalScore = total / gCount;
-        } else {
-            totalScore = 0;
-        }
-        scoreAsString = decimalFormat.format(totalScore);
+        txtScore.setText(presenter.getScoreAsString() + "%");
         TextView txtAverage = this.findViewById(R.id.txtAverage);
-        if (totalScore == 100.0) {
-            scoreAsString = "100";
-        }
-        txtAverage.setText(scoreAsString + "%");
+        txtAverage.setText(presenter.getAverageAsString() + "%");
+
     }
-    private float getScore(GameResult gr) {
-        float qCount = 0;
-        float qRight = 0;
-        for (GameAnswer a : gr.getAnswers())
-        {
-            qCount += 1;
-            if(a.HasCorrectAnswer())
-                qRight += 1;
-        }
-        float score;
-        if (qCount > 0) {
-            score = (qRight / qCount) * 100;
-        } else {
-            score = 0;
-        }
-        return score;
-    }
+
 
     public void loadHistory(View view) {
         Intent intent = new Intent(this, HistoryActivity.class);
