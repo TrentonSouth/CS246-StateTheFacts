@@ -35,7 +35,7 @@ public class UserProfileActivity extends AppCompatActivity {
         String email = editEmail.getText().toString();
 
         // save to file
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("userProfile", 0);
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("STFUserProfile", 0);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.putString("user_name", user);

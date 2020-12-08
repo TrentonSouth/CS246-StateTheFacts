@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         thread.start();
 
         // load preference file
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("userProfile", 0);
+        SharedPreferences preferences = getApplicationContext().getSharedPreferences("STFUserProfile", 0);
         String userName = preferences.getString("user_name", null);
         String userEMail = preferences.getString("user_email", null);
 
@@ -78,6 +78,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //https://www.youtube.com/watch?v=zwabHRv2taA
         if (item.getItemId() == R.id.profile) {
             intent = new Intent(this, UserProfileActivity.class);
+            if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
+                // log message
+                msg = "Profile information: " + profile.getUserName()
+                        + " , " + profile.getUserEMail();
+                Log.d(TAG, msg);
+
+                // add user profile to intent
+                intent.putExtra(HASPROFILE, "yes");
+                intent.putExtra(USER, profile.getUserName());
+                intent.putExtra(EMAIL, profile.getUserEMail());
+            } else {
+                // no user profile
+                intent.putExtra(HASPROFILE, "no");
+            }
+            // start activity
             startActivity(intent);
         } else if (item.getItemId() == R.id.history) {
             intent = new Intent(this, HistoryActivity.class);

@@ -94,12 +94,14 @@
 
 
         <TableRow android:layout_marginTop="20dp">
+
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button_email_history"
                 android:layout_height="wrap_content"
-                android:layout_span="2"
                 android:layout_gravity="center"
-                android:text="@string/button_email_history"/>
+                android:layout_span="2"
+                android:onClick="sendEmailButton"
+                android:text="@string/button_email_history" />
         </TableRow>
 
     </TableLayout>

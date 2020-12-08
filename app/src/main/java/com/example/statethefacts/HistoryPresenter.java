@@ -45,6 +45,16 @@ public class HistoryPresenter {
     }
 
     // Charts library information can be found at https://github.com/PhilJay/MPAndroidChart
+    public double getAverageScoreEmail() {
+        getAverageScore();
+        return averageScore;
+    }
+
+    public int getPlayAttemptsEmail() {
+        getPlayAttempts();
+        return playAttempts;
+    }
+
     private void setupChart() {
         LineChart chart = activity.findViewById(R.id.chart);
 
