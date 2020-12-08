@@ -59,6 +59,10 @@ public class GameSettingsPresenter {
             textEntry.setChecked(true);
             multipleChoice.setChecked(false);
         }
+        TextView viewNumberOfFacts = activity.findViewById(R.id.numberOfFacts);
+        int intNumberOfFacts = gameSettings.getNumberOfFacts();
+        String stringNumberOfFacts = String.valueOf(intNumberOfFacts);
+        viewNumberOfFacts.setText(stringNumberOfFacts);
     }
 
     /**

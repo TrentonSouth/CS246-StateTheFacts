@@ -159,7 +159,7 @@ public class GameSettings {
      * Purpose: to get the number of games as an integer
      * @return number of games as an integer
      */
-    public int getNumberOfGames() { return numberOfGames; }
+    public int getNumberOfFacts() { return numberOfGames; }
 
     /**
      * the setNumberOfGames Method

@@ -45,7 +45,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     }
 
     public void onClickStartGame(View view) {
-        TextView numberOfFactsView = this.findViewById(R.id.numberOfGames);
+        TextView numberOfFactsView = this.findViewById(R.id.numberOfFacts);
         String stringNumberOfFacts = numberOfFactsView.getText().toString();
         int numberOfFacts = Integer.parseInt(stringNumberOfFacts);
 

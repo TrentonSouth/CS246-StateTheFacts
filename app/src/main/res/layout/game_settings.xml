@@ -125,7 +125,7 @@
         android:text="@string/button_start_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfGames" />
+        app:layout_constraintTop_toBottomOf="@+id/numberOfFacts" />
 
     <TextView
         android:id="@+id/textView2"
@@ -143,14 +143,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/numberOfGames"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/numberOfFacts"
+        android:layout_width="84dp"
+        android:layout_height="38dp"
         android:layout_marginStart="65dp"
         android:layout_marginEnd="137dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
