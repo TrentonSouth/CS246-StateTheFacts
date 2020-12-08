@@ -3,6 +3,7 @@ package com.example.statethefacts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +47,19 @@ public class GameActivity extends AppCompatActivity {
         }catch(ClassNotFoundException ex){
             Log.d("Error", "onCreate: Error Generating Game Card: "+ex.getMessage());
         }
+    }
+
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     @Override

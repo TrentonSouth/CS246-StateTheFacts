@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -36,6 +37,19 @@ public class MissedQuestionsActivity extends AppCompatActivity {
         // set txtMissedQuestions to the result of getDisplay from the presenter
         TextView txtMissedQuestions = this.findViewById(R.id.txtMissedQuestions);
         txtMissedQuestions.setText(presenter.getDisplay(this));
+    }
+
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     // When the user clicks the main menu button, the main

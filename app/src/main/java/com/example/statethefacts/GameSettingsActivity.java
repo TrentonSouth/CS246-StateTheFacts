@@ -2,6 +2,7 @@ package com.example.statethefacts;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,6 +29,19 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         gameSettingsPresenter = new GameSettingsPresenter(this);
         gameSettingsPresenter.loadSettings(mode);
+    }
+
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     public void onClickStartGame(View view) {

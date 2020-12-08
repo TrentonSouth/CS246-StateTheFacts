@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -78,5 +79,18 @@ public class UserProfileActivity extends AppCompatActivity {
             editUser.setText(profile.getUserName());
             editEmail.setText(profile.getUserEMail());
         }
+    }
+
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 }

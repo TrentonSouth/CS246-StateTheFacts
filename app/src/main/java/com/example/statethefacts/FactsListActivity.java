@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ScrollView;
@@ -32,6 +33,19 @@ public class FactsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_facts_list);
         presenter = new FactsListPresenter(this);
         buildList();
+    }
+
+    /**
+     * The onCreateOptionsMenu Method
+     * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     * @param menu
+     * @return boolean as true
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //https://www.youtube.com/watch?v=kknBxoCOYXI
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     // When the user checks or unchecks the bird option the
