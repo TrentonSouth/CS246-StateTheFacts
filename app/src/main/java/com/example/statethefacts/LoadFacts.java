@@ -38,9 +38,7 @@ public class LoadFacts extends Thread {
                 Gson gson = new Gson();
                 HashMap<String, JSONObject> dataSnapshotValue = (HashMap<String, JSONObject>) dataSnapshot.getValue();
                 String json = new Gson().toJson(dataSnapshotValue);
-                //Facts facts = gson.fromJson(json, Facts.class);
-                //Log.d("Message:", "Value is: " + json);
-                //Log.d("Message:", "Value is: " + facts.states.get(0).abbreviation);
+
                 FileOutputStream fos = null;
                 try {
                     fos = activityRef.get().openFileOutput("facts.json",MODE_PRIVATE);
