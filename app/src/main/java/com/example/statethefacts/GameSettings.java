@@ -44,6 +44,7 @@ public class GameSettings {
         editor.putBoolean("flower", flower);
         editor.putBoolean("governor", governor);
         editor.putInt("GameType", gameType.ordinal());
+        editor.putInt("numberOfGames", numberOfGames);
         editor.commit();
     }
 
@@ -61,6 +62,7 @@ public class GameSettings {
         flower = sharedPreferences.getBoolean("flower", false);
         governor = sharedPreferences.getBoolean("governor", false);
         gameType = GameType.values()[sharedPreferences.getInt("GameType", GameType.MultipleChoice.ordinal())];
+        numberOfGames = sharedPreferences.getInt("numberOfGames", 5);
     }
 
 
@@ -164,6 +166,6 @@ public class GameSettings {
      * Purpose: to set the number of games as an integer
      * @param numberOfGames
      */
-    public void setNumberOfGames(int numberOfGames) { this.numberOfGames = numberOfGames; }
+    public void setNumberOfFacts(int numberOfGames) { this.numberOfGames = numberOfGames; }
 
 }

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class GameSettingsPresenter {
@@ -113,4 +114,22 @@ public class GameSettingsPresenter {
         }
         gameSettings.saveGameSettings(activity);
     }
+
+    public boolean updateNumberOfFacts(int numberOfFacts) {
+            if (numberOfFacts < 1) {
+                Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
+                return false;
+            }
+            else if (numberOfFacts > 50) {
+                Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
+                return false;
+            } else {
+                gameSettings.setNumberOfFacts(numberOfFacts);
+                gameSettings.saveGameSettings(activity);
+                return true;
+            }
+
+    }
+
 }
+

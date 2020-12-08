@@ -3,6 +3,7 @@ package com.example.statethefacts;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,9 +31,15 @@ public class GameSettingsActivity extends AppCompatActivity {
     }
 
     public void onClickStartGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra(MainActivity.START_NEW_GAME, true);
-        startActivity(intent);
+        TextView numberOfFactsView = this.findViewById(R.id.numberOfGames);
+        String stringNumberOfFacts = numberOfFactsView.getText().toString();
+        int numberOfFacts = Integer.parseInt(stringNumberOfFacts);
+
+        if (gameSettingsPresenter.updateNumberOfFacts(numberOfFacts) == true) {
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra(MainActivity.START_NEW_GAME, true);
+            startActivity(intent);
+        }
     }
 
     /**
@@ -46,4 +53,5 @@ public class GameSettingsActivity extends AppCompatActivity {
      * @param view the display of the radio buttons
      */
     public void handleRadioButtons(View view) { gameSettingsPresenter.updateGameType(view); }
+
 }
