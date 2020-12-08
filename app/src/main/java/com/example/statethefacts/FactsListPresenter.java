@@ -1,8 +1,5 @@
 package com.example.statethefacts;
 
-import android.content.Context;
-import android.widget.TextView;
-
 
 /**
  * The FactsListPresenter class is the backend for FactsListActivity
@@ -54,7 +51,7 @@ public class FactsListPresenter {
         GetFacts getFacts = new GetFacts();
         // facts is the variable that will be used to hold all
         // of the facts obtained from getFacts.
-        Facts facts = getFacts.Fetch(activity);
+        Facts facts = getFacts.fetchFacts(activity);
         // facts has an array called states that holds all
         // of the state information. Loop through each
         // state and update the display if the boolean

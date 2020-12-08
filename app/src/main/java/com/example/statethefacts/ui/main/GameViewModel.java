@@ -39,7 +39,7 @@ public class GameViewModel extends AndroidViewModel {
         super(application);
 
         GetFacts gf = new GetFacts();
-        Facts facts = gf.Fetch(getApplication().getApplicationContext());
+        Facts facts = gf.fetchFacts(getApplication().getApplicationContext());
         allStates = facts.getStates();
         gameResult = new GameResult();
 
