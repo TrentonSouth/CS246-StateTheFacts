@@ -16,9 +16,9 @@ import android.widget.TextView;
  * of all the facts for each state. It uses FactsListPresenter as
  * its presenter.
  *
- * @author  Trenton South
+ * @author Trenton South
  * @version 1.0
- * @since  12/8/2020
+ * @since 12/8/2020
  */
 
 public class FactsListActivity extends AppCompatActivity {
