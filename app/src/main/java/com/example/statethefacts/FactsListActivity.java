@@ -18,7 +18,7 @@ import android.widget.TextView;
  *
  * @author  Trenton South
  * @version 1.0
- * @last_modified  12/8/2020
+ * @since  12/8/2020
  */
 
 public class FactsListActivity extends AppCompatActivity {
