@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:onClick="test">
+    android:layout_height="match_parent">
 
     <CheckBox
         android:id="@+id/checkBoxCapital"
@@ -83,8 +82,8 @@
             android:id="@+id/radioButtonMultipleChoice"
             android:layout_width="164dp"
             android:layout_height="30dp"
-            android:layout_marginTop="0dp"
             android:layout_marginStart="32dp"
+            android:layout_marginTop="0dp"
             android:onClick="handleRadioButtons"
             android:text="Multiple Choice"
             app:layout_constraintEnd_toEndOf="parent"
