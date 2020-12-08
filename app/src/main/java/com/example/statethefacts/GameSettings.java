@@ -4,6 +4,10 @@ package com.example.statethefacts;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * The GameSettings Class
+ * represents the game settings
+ */
 public class GameSettings {
 
     private boolean capital;
@@ -11,10 +15,11 @@ public class GameSettings {
     private boolean bird;
     private boolean flower;
     private boolean governor;
+    private int numberOfGames;
 
     private GameType gameType;
-    private GameSettings gameSettings;
-    private GameSettingsPresenter gameSettingsPresenter;
+    //private GameSettings gameSettings;
+    //private GameSettingsPresenter gameSettingsPresenter;
 
     /**
      * Construct a default game settings
@@ -31,7 +36,6 @@ public class GameSettings {
         //https://github.com/macbeth-byui/CS246_Class/blob/master/SharedPrefExample/app/src/main/java/macbeth/sharedprefexample/MainActivity.java
         //https://developer.android.com/training/data-storage/shared-preferences
         //https://gist.github.com/yochiro/de99920a9ad3ab37c88c63e3409bdaf4
-
         SharedPreferences sharedPreferences = context.getSharedPreferences("GameSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("capital", capital);
@@ -143,9 +147,23 @@ public class GameSettings {
 
     /**
      * the setGameType Method
-     * Purpose: get set the type of game. Multiple choice or text entry
+     * Purpose: set the type of game. Multiple choice or text entry
      * @param gameType
      */
     public void setGameType(GameType gameType) { this.gameType = gameType; }
+
+    /**
+     * the getNumberOfGames Method
+     * Purpose: to get the number of games as an integer
+     * @return number of games as an integer
+     */
+    public int getNumberOfGames() { return numberOfGames; }
+
+    /**
+     * the setNumberOfGames Method
+     * Purpose: to set the number of games as an integer
+     * @param numberOfGames
+     */
+    public void setNumberOfGames(int numberOfGames) { this.numberOfGames = numberOfGames; }
 
 }
