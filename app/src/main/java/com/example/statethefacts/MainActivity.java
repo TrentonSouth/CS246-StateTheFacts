@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // constants and variables
-    // private UserProfilePresenter profile;
     private MainUserProfilePresenter userProfile;
     private String msg;
     private Intent intent;
