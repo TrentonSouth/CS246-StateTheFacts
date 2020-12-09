@@ -19,8 +19,9 @@ import java.io.*;
 public class GetFacts {
 
     /**
-     * the saveGameSettings Method
-     * Purpose: to save capital, rock, bird, flower, governor, and gameType as a Boolean
+     * the fetchFacts Method
+     * Purpose: to populate and return a list of all the facts
+     * from the file facts.json
      *
      * @param ctx
      */
