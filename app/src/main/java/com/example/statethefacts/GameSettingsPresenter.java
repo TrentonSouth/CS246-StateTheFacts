@@ -6,7 +6,10 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * The GameSettingsPresenter class handles the
+ * logic for the GameSettingsActivity class
+ */
 public class GameSettingsPresenter {
 
     GameSettings gameSettings;
@@ -119,6 +122,12 @@ public class GameSettingsPresenter {
         gameSettings.saveGameSettings(activity);
     }
 
+    /**
+     * the updateNumberOfFacts Method
+     * Purpose: make sure user chooses a number between 1 and 50
+     * @param numberOfFacts
+     * @return boolean
+     */
     public boolean updateNumberOfFacts(int numberOfFacts) {
             if (numberOfFacts < 1) {
                 Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();

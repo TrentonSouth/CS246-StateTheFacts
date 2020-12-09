@@ -73,7 +73,7 @@
         android:layout_width="357dp"
         android:layout_height="36dp"
         android:layout_marginTop="28dp"
-        android:text="Number of States to be Tested on:"
+        android:text="Number of States to be tested on:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.574"

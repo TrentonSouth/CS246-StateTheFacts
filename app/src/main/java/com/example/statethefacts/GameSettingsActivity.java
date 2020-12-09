@@ -44,6 +44,11 @@ public class GameSettingsActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * the onClickStartGame Method
+     * Purpose: if the user chooses a number between 1 and 50, the game will start
+     * @param view
+     */
     public void onClickStartGame(View view) {
         TextView numberOfFactsView = this.findViewById(R.id.numberOfFacts);
         String stringNumberOfFacts = numberOfFactsView.getText().toString();
