@@ -14,7 +14,13 @@ public class UserProfilePresenter extends AppCompatActivity {
         return profile.getUserEMail();
     }
 
+    public String getUserAge() { return profile.getUserAge(); }
+
     public UserProfilePresenter(String user, String email) {
         profile = new UserProfile(user, email);
+    }
+
+    public UserProfilePresenter(String user, String email, String age) {
+        profile = new UserProfile(user, email, age);
     }
 }

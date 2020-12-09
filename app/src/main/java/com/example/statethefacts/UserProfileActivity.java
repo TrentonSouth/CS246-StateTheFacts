@@ -28,12 +28,14 @@ public class UserProfileActivity extends AppCompatActivity {
     /** called when user clicks Save Profile button */
     public void saveProfile(View view) {
         // get name/email from form
-        EditText editName = (EditText) findViewById(R.id.name_entry);
-        EditText editEmail = (EditText) findViewById(R.id.email_entry);
+        EditText editName = findViewById(R.id.name_entry);
+        EditText editEmail = findViewById(R.id.email_entry);
+        EditText editAge = findViewById(R.id.age_entry);
 
         // put name/email into variables
         String user = editName.getText().toString();
         String email = editEmail.getText().toString();
+        String age = editAge.getText().toString();
 
         // save to file
         SharedPreferences preferences = getApplicationContext().getSharedPreferences("STFUserProfile", 0);
@@ -41,6 +43,7 @@ public class UserProfileActivity extends AppCompatActivity {
         editor.clear();
         editor.putString("user_name", user);
         editor.putString("user_email", email);
+        editor.putString("user_age", age);
 
         // commit changes to preferences
         editor.commit();
@@ -60,24 +63,28 @@ public class UserProfileActivity extends AppCompatActivity {
 
         // get intent
         if (!MainActivity.HASPROFILE.contains("no")) {
-            Intent intent1 = getIntent();
-            String user = intent1.getStringExtra(MainActivity.USER);
-            String email = intent1.getStringExtra(MainActivity.EMAIL);
+            Intent intent = getIntent();
+            String user = intent.getStringExtra(MainActivity.USER);
+            String email = intent.getStringExtra(MainActivity.EMAIL);
+            String age = intent.getStringExtra(MainActivity.AGE);
 
-            profile = new UserProfilePresenter(user, email);
+            profile = new UserProfilePresenter(user, email, age);
 
             // set user and email EditText fields to saved profile
-            EditText editUser = (EditText) findViewById(R.id.name_entry);
-            EditText editEmail = (EditText) findViewById(R.id.email_entry);
+            EditText editUser = findViewById(R.id.name_entry);
+            EditText editEmail = findViewById(R.id.email_entry);
+            EditText editAge = findViewById(R.id.age_entry);
 
             // log receipt of intent
             String msg = "Received intent with " + profile.getUserName()
-                    + ", " + profile.getUserEMail();
+                    + ", " + profile.getUserEMail() + ", "
+                    + profile.getUserAge();
             Log.d(TAG, msg);
 
             // display fields
             editUser.setText(profile.getUserName());
             editEmail.setText(profile.getUserEMail());
+            editAge.setText(profile.getUserAge());
         }
     }
 

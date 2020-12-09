@@ -27,7 +27,8 @@ public class MainUserProfilePresenter {
         this.activity = activity;
         SharedPreferences preferences = activity.getSharedPreferences("STFUserProfile", 0);
         profile = new UserProfilePresenter(preferences.getString("user_name", null),
-                preferences.getString("user_email", null));
+                preferences.getString("user_email", null),
+                preferences.getString("user_age", null));
         Log.i(TAG, "Loaded user information from STFUserProfile");
 
         // if the user has input their name as part of the profile, the welcome screen

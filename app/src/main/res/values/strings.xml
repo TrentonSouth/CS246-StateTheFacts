@@ -22,8 +22,10 @@
     <string name="button_get_facts">Get Facts</string>
     <string name="name_hint">Enter your name</string>
     <string name="email_hint">Enter your email</string>
+    <string name="age_hint">Enter your age</string>
     <string name="label_name">Name</string>
     <string name="label_email">Email</string>
+    <string name="label_age">Age</string>
     <string name="userProfile_title">User Information</string>
     <string name="user_name">Please update your profile</string>
     <string name="action_settings">Settings</string>

@@ -9,15 +9,15 @@ package com.example.statethefacts;
 public class UserProfile {
     private String userName;
     private String userEMail;
-    private int userAge;
+    private String userAge;
 
     // constructors
     public UserProfile(String userName, String userEMail) {
         setUserName(userName);
         setUserEMail(userEMail);
-        setUserAge(0);
+        setUserAge(null);
     }
-    public UserProfile(String userName, String userEMail, int userAge) {
+    public UserProfile(String userName, String userEMail, String userAge) {
         setUserName(userName);
         setUserEMail(userEMail);
         setUserAge(userAge);
@@ -38,6 +38,6 @@ public class UserProfile {
         this.userEMail = userEMail;
     }
 
-    public int getUserAge() { return userAge; }
-    public void setUserAge(int userAge) { this.userAge = userAge; }
+    public String getUserAge() { return userAge; }
+    public void setUserAge(String userAge) { this.userAge = userAge; }
 }

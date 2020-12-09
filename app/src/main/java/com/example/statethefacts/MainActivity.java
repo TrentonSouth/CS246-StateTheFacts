@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
     public static final String USER = "com.example.statethefacts.USER";
     public static final String EMAIL = "com.example.statethefacts.EMAIL";
+    public static final String AGE = "com.example.statethefacts.AGE";
     public static final String HASPROFILE = "com.example.statethefacts.HASPROFILE";
 
     // initial method for launch
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra(HASPROFILE, "yes");
                 intent.putExtra(USER, userProfile.getProfile().getUserName());
                 intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
+                intent.putExtra(AGE, userProfile.getProfile().getUserAge());
             } else {
                 // no user profile
                 intent.putExtra(HASPROFILE, "no");
@@ -144,13 +146,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
                     // log message
                     msg = "Profile information: " + userProfile.getProfile().getUserName()
-                            + " , " + userProfile.getProfile().getUserEMail();
+                            + " , " + userProfile.getProfile().getUserEMail() + ", "
+                            + userProfile.getProfile().getUserAge();
                     Log.d(TAG, msg);
 
                     // add user profile to intent
                     intent.putExtra(HASPROFILE, "yes");
                     intent.putExtra(USER, userProfile.getProfile().getUserName());
                     intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
+                    intent.putExtra(AGE, userProfile.getProfile().getUserAge());
                 } else {
                     // no user profile
                     intent.putExtra(HASPROFILE, "no");
