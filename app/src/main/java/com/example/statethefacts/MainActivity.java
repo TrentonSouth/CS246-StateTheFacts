@@ -1,5 +1,6 @@
 package com.example.statethefacts;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -17,7 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // constants and variables
-    private UserProfilePresenter profile;
+    // private UserProfilePresenter profile;
+    private MainUserProfilePresenter userProfile;
     private String msg;
     private Intent intent;
     public static final String TAG = "MainActivity";
@@ -38,20 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Thread thread = new Thread(facts);
         thread.start();
 
-        // load preference file
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("STFUserProfile", 0);
-        String userName = preferences.getString("user_name", null);
-        String userEMail = preferences.getString("user_email", null);
-
-        profile = new UserProfilePresenter(userName, userEMail);
-        // Access field in form
-        TextView editUserWelcome = findViewById(R.id.user_welcome);
-
-        // update field in form
-        if(profile.getUserName() != null) {
-            String welcomeText = "Welcome back, " + profile.getUserName() + "!";
-            editUserWelcome.setText(welcomeText);
-        }
+        // creates a new MainUserProfilePresenter object with user profile information
+        // updates welcome message if there is a profile
+        userProfile = new MainUserProfilePresenter(MainActivity.this);
     }
 
     /**
@@ -78,16 +69,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //https://www.youtube.com/watch?v=zwabHRv2taA
         if (item.getItemId() == R.id.profile) {
             intent = new Intent(this, UserProfileActivity.class);
-            if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
+            if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
                 // log message
-                msg = "Profile information: " + profile.getUserName()
-                        + " , " + profile.getUserEMail();
+                msg = "Profile information: " + userProfile.getProfile().getUserName()
+                        + " , " + userProfile.getProfile().getUserEMail();
                 Log.d(TAG, msg);
 
                 // add user profile to intent
                 intent.putExtra(HASPROFILE, "yes");
-                intent.putExtra(USER, profile.getUserName());
-                intent.putExtra(EMAIL, profile.getUserEMail());
+                intent.putExtra(USER, userProfile.getProfile().getUserName());
+                intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
             } else {
                 // no user profile
                 intent.putExtra(HASPROFILE, "no");
@@ -151,16 +142,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_change:
                 intent = new Intent(this, UserProfileActivity.class);
-                if (profile.getUserName() != null && !profile.getUserName().isEmpty()) {
+                if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
                     // log message
-                    msg = "Profile information: " + profile.getUserName()
-                            + " , " + profile.getUserEMail();
+                    msg = "Profile information: " + userProfile.getProfile().getUserName()
+                            + " , " + userProfile.getProfile().getUserEMail();
                     Log.d(TAG, msg);
 
                     // add user profile to intent
                     intent.putExtra(HASPROFILE, "yes");
-                    intent.putExtra(USER, profile.getUserName());
-                    intent.putExtra(EMAIL, profile.getUserEMail());
+                    intent.putExtra(USER, userProfile.getProfile().getUserName());
+                    intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
                 } else {
                     // no user profile
                     intent.putExtra(HASPROFILE, "no");
