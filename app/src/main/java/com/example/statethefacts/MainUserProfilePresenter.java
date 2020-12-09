@@ -12,9 +12,9 @@ import android.widget.TextView;
 public class MainUserProfilePresenter {
     private static final String TAG = "MainUserProfile";
     private MainActivity activity;
-    private UserProfilePresenter profile;
+    private UserProfile profile;
 
-    public UserProfilePresenter getProfile() {
+    public UserProfile getProfile() {
         return profile;
     }
 
@@ -26,7 +26,7 @@ public class MainUserProfilePresenter {
     public MainUserProfilePresenter(MainActivity activity) {
         this.activity = activity;
         SharedPreferences preferences = activity.getSharedPreferences("STFUserProfile", 0);
-        profile = new UserProfilePresenter(preferences.getString("user_name", null),
+        profile = new UserProfile(preferences.getString("user_name", null),
                 preferences.getString("user_email", null),
                 preferences.getString("user_age", null));
         Log.i(TAG, "Loaded user information from STFUserProfile");
