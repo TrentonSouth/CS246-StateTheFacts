@@ -28,7 +28,7 @@ public class EmailPresenter {
     }
 
     public void sendMessage() {
-        if (profile.getUserName() != null) {
+        if (profile.getUserName() != null && profile.getUserEMail() != null) {
             Log.i(TAG, "Send History Email Launched");
             Log.i(TAG, "Send email to " + profile.getUserEMail());
             activity.getPresenter().loadGameResult();

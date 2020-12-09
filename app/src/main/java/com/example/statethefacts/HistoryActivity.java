@@ -42,9 +42,14 @@ public class HistoryActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * sendEmailButton - method checks for a valid user name and email before launching the
+     * sendMessage() method, which sends the user's history statistics.
+     * @param view
+     */
     public void sendEmailButton(View view) {
         email = new EmailPresenter(HistoryActivity.this);
-        if (email.getProfile().getUserName() != null) {
+        if (email.getProfile().getUserName() != null && email.getProfile().getUserEMail() != null) {
             email.sendMessage();
         } else {
             // toast to notify user there isn't a saved profile
