@@ -22,8 +22,4 @@
         android:title="@string/learn_mode"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/game_mode"
-        android:title="@string/game_mode"
-        app:showAsAction="never"/>
-
 </menu>
