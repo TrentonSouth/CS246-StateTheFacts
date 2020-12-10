@@ -5,6 +5,10 @@ package com.example.statethefacts;
  * UserProfile is a class to hold user information, including
  * name, email and age. It is a basic class with just the three
  * fields, getters, setters, and two constructors.
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class UserProfile {
     private String userName;

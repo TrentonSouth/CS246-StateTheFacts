@@ -15,8 +15,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
- * This class provides the application with access to a gmail account
+ * This class provides the application with access to a Gmail account
  * for sending the player history to the user of StateTheFacts
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class GMail {
 
@@ -86,6 +90,9 @@ public class GMail {
         emailMessage.setFrom(new InternetAddress(fromEmail, fromEmail));
         emailMessage.addRecipient(Message.RecipientType.TO,
                 new InternetAddress(toEmail));
+
+        // removed information for multiple recipients
+
         /*  for (String toEmail : toEmailList) {
             Log.i("GMail", "toEmail: " + toEmail);
             emailMessage.addRecipient(Message.RecipientType.TO,

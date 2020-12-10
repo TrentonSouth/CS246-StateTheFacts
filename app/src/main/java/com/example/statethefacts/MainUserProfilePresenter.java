@@ -5,9 +5,13 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
- * MainUserProfilePresenter cast is the user profile presenter for
+ * MainUserProfilePresenter: The interface between UserProfile class and
  * MainActivity. Provides MainActivity with methods and access to fields for
- * the User's name and Email address.
+ * the User's name, Email address, and age.
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class MainUserProfilePresenter {
     private static final String TAG = "MainUserProfile";

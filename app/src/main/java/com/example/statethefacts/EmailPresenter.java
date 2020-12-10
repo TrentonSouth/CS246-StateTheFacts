@@ -6,8 +6,13 @@ import android.util.Log;
 /**
  * The EmailPresenter class contains the methods used to send emails, linking
  * GMail and SendMailTask classes to the HistoryActivity
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class EmailPresenter {
+    // declare variables and constants
     private static final String FROM_EMAIL = "statethefacts2020@gmail.com";
     private static final String EMAIL_PASSWORD = "H9F4eBNA2wStNs2F";
     private static final String EMAIL_SUBJECT = "State The Facts History";
@@ -33,7 +38,7 @@ public class EmailPresenter {
     }
 
     /**
-     * getProfile() is a getter fro the UserProfilePresenter object profile
+     * getProfile() is a getter for the UserProfilePresenter object profile
      * @return
      */
     public UserProfilePresenter getProfile() {

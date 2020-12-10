@@ -8,7 +8,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+/**
+ * UserProfilePresenter: The interface between UserProfile class
+ * and the UserProfileActivity
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
+ */
 public class UserProfilePresenter {
     // declare variables and constants
     private static final String TAG = "UserProfileActivity";
@@ -38,6 +45,9 @@ public class UserProfilePresenter {
                 preferences.getString("user_age", null));
         Log.i(TAG, "Loaded user information from SharedPreferences");
 
+        /* updates text entry and number entry fields if the information was
+           previously saved in SharedPreferences
+         */
         if (profile.getUserName() != null) {
             TextView editName = activity.findViewById(R.id.name_entry);
             editName.setText(profile.getUserName());
