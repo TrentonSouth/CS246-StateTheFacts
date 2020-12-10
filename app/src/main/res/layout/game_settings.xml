@@ -1,170 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <CheckBox
-        android:id="@+id/checkBoxCapital"
-        style="@android:style/Widget.CompoundButton.CheckBox"
-        android:layout_width="127dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="64dp"
-        android:onClick="handleCheckBox"
-        android:text="Capital"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <CheckBox
-        android:id="@+id/checkBoxBird"
-        android:layout_width="127dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="64dp"
-        android:onClick="handleCheckBox"
-        android:text="Bird"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxCapital" />
-
-    <CheckBox
-        android:id="@+id/checkBoxRock"
-        android:layout_width="125dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="64dp"
-        android:onClick="handleCheckBox"
-        android:text="Rock"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxBird" />
-
-    <CheckBox
-        android:id="@+id/checkBoxGovernor"
-        android:layout_width="128dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="64dp"
-        android:onClick="handleCheckBox"
-        android:text="Governor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxRock" />
-
-    <CheckBox
-        android:id="@+id/checkBoxFlower"
-        android:layout_width="129dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="64dp"
-        android:onClick="handleCheckBox"
-        android:text="Flower"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxGovernor" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="289dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="28dp"
-        android:text="Test type:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxFlower" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="357dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="28dp"
-        android:text="Number of States to be tested on:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_marginStart="32dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/radioButtonMultipleChoice"
-            android:layout_width="164dp"
+        <CheckBox
+            android:id="@+id/checkBoxCapital"
+            style="@android:style/Widget.CompoundButton.CheckBox"
+            android:layout_width="127dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="64dp"
+            android:onClick="handleCheckBox"
+            android:text="Capital"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <CheckBox
+            android:id="@+id/checkBoxBird"
+            android:layout_width="127dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="64dp"
+            android:onClick="handleCheckBox"
+            android:text="Bird"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxCapital" />
+
+        <CheckBox
+            android:id="@+id/checkBoxRock"
+            android:layout_width="125dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="64dp"
+            android:onClick="handleCheckBox"
+            android:text="Rock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxBird" />
+
+        <CheckBox
+            android:id="@+id/checkBoxGovernor"
+            android:layout_width="128dp"
             android:layout_height="30dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="0dp"
-            android:onClick="handleRadioButtons"
-            android:text="Multiple Choice"
+            android:layout_marginStart="64dp"
+            android:onClick="handleCheckBox"
+            android:text="Governor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxRock" />
+
+        <CheckBox
+            android:id="@+id/checkBoxFlower"
+            android:layout_width="129dp"
+            android:layout_height="34dp"
+            android:layout_marginStart="64dp"
+            android:onClick="handleCheckBox"
+            android:text="Flower"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxGovernor" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="289dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="28dp"
+            android:text="Test type:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.206"
+            app:layout_constraintHorizontal_bias="0.256"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxFlower" />
 
-        <RadioButton
-            android:id="@+id/radioButtonTextEntry"
-            android:layout_width="164dp"
-            android:layout_height="30dp"
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="357dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="28dp"
+            android:text="Number of States to be tested on:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.574"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView3"
             android:layout_marginStart="32dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="0dp"
-            android:onClick="handleRadioButtons"
-            android:text="Text Entry"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/radioButtonMultipleChoice" />
-    </RadioGroup>
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-    <Button
-        android:id="@+id/buttonStartGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:onClick="onClickStartGame"
-        android:text="@string/button_start_game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberOfFacts" />
+            <RadioButton
+                android:id="@+id/radioButtonMultipleChoice"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="0dp"
+                android:onClick="handleRadioButtons"
+                android:text="Multiple Choice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.206"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="173dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="39dp"
-        android:text="Facts for testing:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/checkBoxCapital"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <RadioButton
+                android:id="@+id/radioButtonTextEntry"
+                android:layout_width="164dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:onClick="handleRadioButtons"
+                android:text="Text Entry"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioButtonMultipleChoice" />
+        </RadioGroup>
 
-    <EditText
-        android:id="@+id/numberOfFacts"
-        android:layout_width="84dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="137dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        <Button
+            android:id="@+id/buttonStartGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:onClick="onClickStartGame"
+            android:text="@string/button_start_game"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberOfFacts" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="137dp"
-        android:text="Enter a number between 1 and 50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="173dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="39dp"
+            android:text="Facts for testing:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/checkBoxCapital"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/numberOfFacts"
+            android:layout_width="84dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="65dp"
+            android:layout_marginEnd="137dp"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="137dp"
+            android:text="Enter a number between 1 and 50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
