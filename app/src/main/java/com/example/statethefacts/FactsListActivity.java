@@ -25,6 +25,7 @@ import android.widget.TextView;
  */
 
 public class FactsListActivity extends AppCompatActivity {
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
     private FactsListPresenter presenter;
     Intent intent;
 
@@ -79,6 +80,7 @@ public class FactsListActivity extends AppCompatActivity {
                 break;
             case R.id.game_mode:
                 intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
                 startActivity(intent);
                 break;
             default:

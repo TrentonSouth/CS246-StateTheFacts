@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class UserProfileActivity extends AppCompatActivity {
     /** define variables and constants */
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
     private static final String TAG = "UserProfileActivity";
     private UserProfilePresenter profile;
     private Intent intent;
@@ -78,6 +79,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 break;
             case R.id.game_mode:
                 intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
                 startActivity(intent);
                 break;
             default:

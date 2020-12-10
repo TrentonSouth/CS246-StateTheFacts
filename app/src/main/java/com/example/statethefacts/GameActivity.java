@@ -18,6 +18,7 @@ import com.example.statethefacts.ui.main.GameViewModel;
 public class GameActivity extends AppCompatActivity {
 
     public static final String GAME_ID = "com.example.statethefacts.GAME_ID";
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
 
     Intent intent;
     GameViewModel viewModel;
@@ -94,6 +95,11 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.learn_mode:
                 intent = new Intent(this, FactsListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.game_mode:
+                intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
                 startActivity(intent);
                 break;
             default:
