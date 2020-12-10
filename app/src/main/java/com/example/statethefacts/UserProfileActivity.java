@@ -61,31 +61,7 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        // get intent
-        if (!MainActivity.HASPROFILE.contains("no")) {
-            Intent intent = getIntent();
-            String user = intent.getStringExtra(MainActivity.USER);
-            String email = intent.getStringExtra(MainActivity.EMAIL);
-            String age = intent.getStringExtra(MainActivity.AGE);
-
-            profile = new UserProfilePresenter(user, email, age);
-
-            // set user and email EditText fields to saved profile
-            EditText editUser = findViewById(R.id.name_entry);
-            EditText editEmail = findViewById(R.id.email_entry);
-            EditText editAge = findViewById(R.id.age_entry);
-
-            // log receipt of intent
-            String msg = "Received intent with " + profile.getUserName()
-                    + ", " + profile.getUserEMail() + ", "
-                    + profile.getUserAge();
-            Log.d(TAG, msg);
-
-            // display fields
-            editUser.setText(profile.getUserName());
-            editEmail.setText(profile.getUserEMail());
-            editAge.setText(profile.getUserAge());
-        }
+        profile = new UserProfilePresenter(UserProfileActivity.this);
     }
 
     /**
