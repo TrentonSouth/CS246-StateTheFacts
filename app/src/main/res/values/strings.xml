@@ -6,6 +6,7 @@
     <string name="score_card">Score Card</string>
     <string name="learn_mode">Learn Mode</string>
     <string name="game_mode">Game Mode</string>
+    <string name="main">Main Menu</string>
 
     <string name="app_title">State The Facts</string>
     <string name="button_charts_example">Charts Example</string>
@@ -15,7 +16,7 @@
     <string name="button_next_question">Next Question</string>
     <string name="button_save_userPreferences">Save</string>
     <string name="button_change_profile">Change Profile</string>
-    <string name="button_practice_mode">Practice Mode</string>
+    <string name="button_practice_mode">Learn Mode</string>
     <string name="button_game_mode">Game Mode</string>
     <string name="button_history">VIEW GAME HISTORY</string>
     <string name="title_activity_facts_list">ScrollingActivity</string>

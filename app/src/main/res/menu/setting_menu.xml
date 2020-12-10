@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/main"
+        android:title="@string/main"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/profile"
+        android:title="@string/profile"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/history"
+        android:title="@string/history"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/score_card"
+        android:title="@string/score_card"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/learn_mode"
+        android:title="@string/learn_mode"
+        app:showAsAction="never"/>
+
+</menu>

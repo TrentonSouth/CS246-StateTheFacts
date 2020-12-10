@@ -38,7 +38,7 @@ public class HistoryActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //https://www.youtube.com/watch?v=kknBxoCOYXI
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.history_menu, menu);
         return true;
     }
 
