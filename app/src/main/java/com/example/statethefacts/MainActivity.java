@@ -69,21 +69,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //https://www.youtube.com/watch?v=zwabHRv2taA
         if (item.getItemId() == R.id.profile) {
             intent = new Intent(this, UserProfileActivity.class);
-            if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
-                // log message
-                msg = "Profile information: " + userProfile.getProfile().getUserName()
-                        + " , " + userProfile.getProfile().getUserEMail();
-                Log.d(TAG, msg);
-
-                // add user profile to intent
-                intent.putExtra(HASPROFILE, "yes");
-                intent.putExtra(USER, userProfile.getProfile().getUserName());
-                intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
-                intent.putExtra(AGE, userProfile.getProfile().getUserAge());
-            } else {
-                // no user profile
-                intent.putExtra(HASPROFILE, "no");
-            }
             // start activity
             startActivity(intent);
         } else if (item.getItemId() == R.id.history) {
@@ -143,22 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_change:
                 intent = new Intent(this, UserProfileActivity.class);
-                if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
-                    // log message
-                    msg = "Profile information: " + userProfile.getProfile().getUserName()
-                            + " , " + userProfile.getProfile().getUserEMail() + ", "
-                            + userProfile.getProfile().getUserAge();
-                    Log.d(TAG, msg);
 
-                    // add user profile to intent
-                    intent.putExtra(HASPROFILE, "yes");
-                    intent.putExtra(USER, userProfile.getProfile().getUserName());
-                    intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
-                    intent.putExtra(AGE, userProfile.getProfile().getUserAge());
-                } else {
-                    // no user profile
-                    intent.putExtra(HASPROFILE, "no");
-                }
                 // start activity
                 startActivity(intent);
                 break;
