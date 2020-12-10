@@ -1,13 +1,16 @@
 
 package com.example.statethefacts;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 public class UserProfilePresenter {
+    // declare variables and constants
     private static final String TAG = "UserProfileActivity";
     private UserProfile profile;
     private UserProfileActivity activity;
@@ -22,7 +25,7 @@ public class UserProfilePresenter {
     public String getUserAge() { return profile.getUserAge(); }
 
     /**
-     * UserProfilePresenter constructor creates an object using saved
+     * UserProfilePresenter constructor: creates an object using saved
      * data from SharedPreferences and updates the text entry fields
      * if the user has already saved the information.
      * @param activity
@@ -49,11 +52,48 @@ public class UserProfilePresenter {
         }
     }
 
+    // constructors to instantiate object using direct information
     public UserProfilePresenter(String user, String email) {
         profile = new UserProfile(user, email);
     }
-
     public UserProfilePresenter(String user, String email, String age) {
         profile = new UserProfile(user, email, age);
+    }
+
+    /**
+     * saveProfile: using information from the three text entry fields in the
+     * UserProfileActivity, saves user profile information into SharePreferences
+     * @param activity
+     */
+    public void saveProfile(UserProfileActivity activity) {
+        // get name/email from form
+        EditText editName = activity.findViewById(R.id.name_entry);
+        EditText editEmail = activity.findViewById(R.id.email_entry);
+        EditText editAge = activity.findViewById(R.id.age_entry);
+
+        // put name/email into variables
+        String user = editName.getText().toString();
+        String email = editEmail.getText().toString();
+        String age = editAge.getText().toString();
+
+        // save to file
+        SharedPreferences preferences = activity.getSharedPreferences("STFUserProfile", 0);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.putString("user_name", user);
+        editor.putString("user_email", email);
+        editor.putString("user_age", age);
+
+        // commit changes to preferences
+        editor.commit();
+
+        // toast to tell user the save has completed
+        Context context = activity.getApplicationContext();
+        CharSequence text = "Saving your preferences";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
     }
 }
