@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 /**
  * UserProfileActivity: provides a place for the user to input
  * and save their profile information, including name, email, and age
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class UserProfileActivity extends AppCompatActivity {
     /** define variables and constants */
