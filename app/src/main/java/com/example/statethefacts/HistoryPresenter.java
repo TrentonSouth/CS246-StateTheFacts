@@ -127,9 +127,13 @@ public class HistoryPresenter {
             return;
         }
 
-        int index = 0;
+        int index = 1;
         int entryLimit = Math.min(scores.size(), MAX_CHART_ENTRIES);
-        for (int i = entryLimit - 1; i >= 0; i--) {
+        int firstEntry = scores.size() - entryLimit;
+        if(firstEntry < 0)
+            firstEntry = 0;
+
+        for (int i = firstEntry; i < scores.size(); i++) {
             chartEntries.add(new Entry(index++, scores.get(i).floatValue() * 100));
         }
     }
