@@ -92,6 +92,9 @@ public class GameSettingsActivity extends AppCompatActivity {
     public void onClickStartGame(View view) {
         TextView numberOfFactsView = this.findViewById(R.id.numberOfFacts);
         String stringNumberOfFacts = numberOfFactsView.getText().toString();
+        if(stringNumberOfFacts.length() == 0) {
+            stringNumberOfFacts = "0";
+        }
         int numberOfFacts = Integer.parseInt(stringNumberOfFacts);
 
         if (gameSettingsPresenter.updateNumberOfFacts(numberOfFacts) == true) {
@@ -112,5 +115,4 @@ public class GameSettingsActivity extends AppCompatActivity {
      * @param view the display of the radio buttons
      */
     public void handleRadioButtons(View view) { gameSettingsPresenter.updateGameType(view); }
-
 }

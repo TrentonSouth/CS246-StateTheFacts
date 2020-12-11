@@ -93,7 +93,6 @@ public class GameSettingsPresenter {
             case R.id.checkBoxBird:
                 gameSettings.setBird(checked);
                 break;
-
         }
         gameSettings.saveGameSettings(activity);
     }
@@ -129,20 +128,17 @@ public class GameSettingsPresenter {
      * @return boolean
      */
     public boolean updateNumberOfFacts(int numberOfFacts) {
-            if (numberOfFacts < 1) {
-                Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
-                return false;
-            }
-            else if (numberOfFacts > 50) {
-                Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
-                return false;
-            } else {
-                gameSettings.setNumberOfFacts(numberOfFacts);
-                gameSettings.saveGameSettings(activity);
-                return true;
-            }
-
+        if (numberOfFacts < 1) {
+            Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (numberOfFacts > 50) {
+            Toast.makeText(activity.getApplicationContext(), "Please enter a number between 1 and 50", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            gameSettings.setNumberOfFacts(numberOfFacts);
+            gameSettings.saveGameSettings(activity);
+            return true;
+        }
     }
-
 }
 
