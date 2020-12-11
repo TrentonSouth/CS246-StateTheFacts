@@ -9,6 +9,11 @@ import java.util.List;
 
 /**
  * the SendMailTask allows the email methods to run in the background
+ * sending email in foreground is not allowed.
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class SendMailTask extends AsyncTask {
     // declare variables

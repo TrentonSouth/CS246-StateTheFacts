@@ -1,20 +1,23 @@
 package com.example.statethefacts;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.view.Menu;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
+/**
+ * MainActivity: Start screen and launch activity. User accesses the rest of the app
+ * from this activity.
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     // constants and variables
@@ -22,12 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String msg;
     private Intent intent;
     public static final String TAG = "MainActivity";
-    public static final String GAMETYPE = "com.example.statethefacts.GAMETYPE";
     public static final String START_NEW_GAME = "com.example.statethefacts.START_NEW_GAME";
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
-    public static final String USER = "com.example.statethefacts.USER";
-    public static final String EMAIL = "com.example.statethefacts.EMAIL";
-    public static final String HASPROFILE = "com.example.statethefacts.HASPROFILE";
 
     // initial method for launch
     @Override
@@ -64,41 +63,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @return boolean as true
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //https://www.youtube.com/watch?v=zwabHRv2taA
-        if (item.getItemId() == R.id.profile) {
-            intent = new Intent(this, UserProfileActivity.class);
-            if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
-                // log message
-                msg = "Profile information: " + userProfile.getProfile().getUserName()
-                        + " , " + userProfile.getProfile().getUserEMail();
-                Log.d(TAG, msg);
-
-                // add user profile to intent
-                intent.putExtra(HASPROFILE, "yes");
-                intent.putExtra(USER, userProfile.getProfile().getUserName());
-                intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
-            } else {
-                // no user profile
-                intent.putExtra(HASPROFILE, "no");
-            }
-            // start activity
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.history) {
-            intent = new Intent(this, HistoryActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.score_card) {
-            intent = new Intent(this, ScoreCardActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.learn_mode) {
-            intent = new Intent(this, FactsListActivity.class);
-            startActivity(intent);
-        } else if (item.getItemId() == R.id.game_mode) {
-            intent = new Intent(this, GameSettingsActivity.class);
-            intent.putExtra(GAME_MODE, "game");
-            startActivity(intent);
-        } else {
-            return super.onOptionsItemSelected(item);
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.profile:
+                intent = new Intent(this, UserProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.history:
+                intent = new Intent(this, HistoryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.score_card:
+                intent = new Intent(this, ScoreCardActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.learn_mode:
+                intent = new Intent(this, FactsListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.game_mode:
+                intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
+                startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
         return true;
     }
@@ -141,20 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profile_change:
                 intent = new Intent(this, UserProfileActivity.class);
-                if (userProfile.getProfile().getUserName() != null && !userProfile.getProfile().getUserName().isEmpty()) {
-                    // log message
-                    msg = "Profile information: " + userProfile.getProfile().getUserName()
-                            + " , " + userProfile.getProfile().getUserEMail();
-                    Log.d(TAG, msg);
 
-                    // add user profile to intent
-                    intent.putExtra(HASPROFILE, "yes");
-                    intent.putExtra(USER, userProfile.getProfile().getUserName());
-                    intent.putExtra(EMAIL, userProfile.getProfile().getUserEMail());
-                } else {
-                    // no user profile
-                    intent.putExtra(HASPROFILE, "no");
-                }
                 // start activity
                 startActivity(intent);
                 break;

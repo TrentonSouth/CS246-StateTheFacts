@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -16,7 +18,9 @@ import com.example.statethefacts.ui.main.GameViewModel;
 public class GameActivity extends AppCompatActivity {
 
     public static final String GAME_ID = "com.example.statethefacts.GAME_ID";
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
 
+    Intent intent;
     GameViewModel viewModel;
     GameCardFactory cardFactory;
 
@@ -58,7 +62,49 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //https://www.youtube.com/watch?v=kknBxoCOYXI
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.game_menu, menu);
+        return true;
+    }
+
+    /**
+     * onOptionsItemSelected Method
+     * Purpose: to listen to the user action when they select a menu item from the 3 dots
+     * (ellipsis) on the upper right side of the app, in the top bar. Navigates to specific
+     * activity based on user selection
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.history:
+                intent = new Intent(this, HistoryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.score_card:
+                intent = new Intent(this, ScoreCardActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.profile:
+                intent = new Intent(this, UserProfileActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.learn_mode:
+                intent = new Intent(this, FactsListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.game_mode:
+                intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
+                startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
         return true;
     }
 

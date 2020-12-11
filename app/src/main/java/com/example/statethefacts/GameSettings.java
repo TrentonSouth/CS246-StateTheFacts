@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * The GameSettings Class
- * represents the game settings
+ * The GameSettings Class holds the variables
+ * for the game settings
  */
 public class GameSettings {
 
@@ -15,7 +15,7 @@ public class GameSettings {
     private boolean bird;
     private boolean flower;
     private boolean governor;
-    private int numberOfGames;
+    private int numberOfFacts;
 
     private GameType gameType;
     //private GameSettings gameSettings;
@@ -44,7 +44,7 @@ public class GameSettings {
         editor.putBoolean("flower", flower);
         editor.putBoolean("governor", governor);
         editor.putInt("GameType", gameType.ordinal());
-        editor.putInt("numberOfGames", numberOfGames);
+        editor.putInt("numberOfGames", numberOfFacts);
         editor.commit();
     }
 
@@ -62,7 +62,7 @@ public class GameSettings {
         flower = sharedPreferences.getBoolean("flower", false);
         governor = sharedPreferences.getBoolean("governor", false);
         gameType = GameType.values()[sharedPreferences.getInt("GameType", GameType.MultipleChoice.ordinal())];
-        numberOfGames = sharedPreferences.getInt("numberOfGames", 5);
+        numberOfFacts = sharedPreferences.getInt("numberOfGames", 5);
     }
 
 
@@ -155,17 +155,17 @@ public class GameSettings {
     public void setGameType(GameType gameType) { this.gameType = gameType; }
 
     /**
-     * the getNumberOfGames Method
-     * Purpose: to get the number of games as an integer
-     * @return number of games as an integer
+     * the getNumberOfFacts Method
+     * Purpose: to get the number of games/facts as an integer
+     * @return number of facts as an integer
      */
-    public int getNumberOfFacts() { return numberOfGames; }
+    public int getNumberOfFacts() { return numberOfFacts; }
 
     /**
-     * the setNumberOfGames Method
-     * Purpose: to set the number of games as an integer
-     * @param numberOfGames
+     * the setNumberOfFacts Method
+     * Purpose: to set the number of games/facts as an integer
+     * @param numberOfFacts
      */
-    public void setNumberOfFacts(int numberOfGames) { this.numberOfGames = numberOfGames; }
+    public void setNumberOfFacts(int numberOfFacts) { this.numberOfFacts = numberOfFacts; }
 
 }

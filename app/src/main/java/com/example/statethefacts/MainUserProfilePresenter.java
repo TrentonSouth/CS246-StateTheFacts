@@ -5,16 +5,20 @@ import android.util.Log;
 import android.widget.TextView;
 
 /**
- * MainUserProfilePresenter cast is the user profile presenter for
+ * MainUserProfilePresenter: The interface between UserProfile class and
  * MainActivity. Provides MainActivity with methods and access to fields for
- * the User's name and Email address.
+ * the User's name, Email address, and age.
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
  */
 public class MainUserProfilePresenter {
     private static final String TAG = "MainUserProfile";
     private MainActivity activity;
-    private UserProfilePresenter profile;
+    private UserProfile profile;
 
-    public UserProfilePresenter getProfile() {
+    public UserProfile getProfile() {
         return profile;
     }
 
@@ -26,8 +30,9 @@ public class MainUserProfilePresenter {
     public MainUserProfilePresenter(MainActivity activity) {
         this.activity = activity;
         SharedPreferences preferences = activity.getSharedPreferences("STFUserProfile", 0);
-        profile = new UserProfilePresenter(preferences.getString("user_name", null),
-                preferences.getString("user_email", null));
+        profile = new UserProfile(preferences.getString("user_name", null),
+                preferences.getString("user_email", null),
+                preferences.getString("user_age", null));
         Log.i(TAG, "Loaded user information from STFUserProfile");
 
         // if the user has input their name as part of the profile, the welcome screen

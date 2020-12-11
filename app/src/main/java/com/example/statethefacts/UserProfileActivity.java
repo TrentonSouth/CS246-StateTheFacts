@@ -1,84 +1,44 @@
 package com.example.statethefacts;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * UserProfileActivity: provides a place for the user to input
+ * and save their profile information, including name, email, and age
+ *
+ *  @author Michael Gibson
+ *  @version 1.0
+ *  @since 12/8/2020
+ */
 public class UserProfileActivity extends AppCompatActivity {
-    /** define constants */
+    /** define variables and constants */
+    public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
     private static final String TAG = "UserProfileActivity";
     private UserProfilePresenter profile;
+    private Intent intent;
 
-    // getters and setters
+    // getter
     public UserProfilePresenter getProfile() {
         return profile;
     }
-    public void setProfile(UserProfilePresenter profile) {
-        this.profile = profile;
-    }
 
-    /** called when user clicks Save Profile button */
-    public void saveProfile(View view) {
-        // get name/email from form
-        EditText editName = (EditText) findViewById(R.id.name_entry);
-        EditText editEmail = (EditText) findViewById(R.id.email_entry);
-
-        // put name/email into variables
-        String user = editName.getText().toString();
-        String email = editEmail.getText().toString();
-
-        // save to file
-        SharedPreferences preferences = getApplicationContext().getSharedPreferences("STFUserProfile", 0);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.putString("user_name", user);
-        editor.putString("user_email", email);
-
-        // commit changes to preferences
-        editor.commit();
-
-        // toast to notify user the preferences are being saved
-        Context context = getApplicationContext();
-        CharSequence text = "Saving your preferences";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
+    /**
+     * Loads Activity using SharedPreferences
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        // get intent
-        if (!MainActivity.HASPROFILE.contains("no")) {
-            Intent intent1 = getIntent();
-            String user = intent1.getStringExtra(MainActivity.USER);
-            String email = intent1.getStringExtra(MainActivity.EMAIL);
-
-            profile = new UserProfilePresenter(user, email);
-
-            // set user and email EditText fields to saved profile
-            EditText editUser = (EditText) findViewById(R.id.name_entry);
-            EditText editEmail = (EditText) findViewById(R.id.email_entry);
-
-            // log receipt of intent
-            String msg = "Received intent with " + profile.getUserName()
-                    + ", " + profile.getUserEMail();
-            Log.d(TAG, msg);
-
-            // display fields
-            editUser.setText(profile.getUserName());
-            editEmail.setText(profile.getUserEMail());
-        }
+        profile = new UserProfilePresenter(UserProfileActivity.this);
     }
 
     /**
@@ -90,7 +50,52 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //https://www.youtube.com/watch?v=kknBxoCOYXI
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.profile_menu, menu);
         return true;
+    }
+
+    /**
+     * onOptionsItemSelected Method
+     * Purpose: to listen to the user action when they select a menu item from the 3 dots
+     * (ellipsis) on the upper right side of the app, in the top bar. Navigates to specific
+     * activity based on user selection
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.main:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.history:
+                intent = new Intent(this, HistoryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.score_card:
+                intent = new Intent(this, ScoreCardActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.learn_mode:
+                intent = new Intent(this, FactsListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.game_mode:
+                intent = new Intent(this, GameSettingsActivity.class);
+                intent.putExtra(GAME_MODE, "game");
+                startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    /**
+     * saveProfile: called when user clicks Save Profile button
+     */
+    public void saveProfile(View view) {
+        profile.saveProfile(UserProfileActivity.this);
     }
 }

@@ -55,7 +55,7 @@ public class GameViewModel extends AndroidViewModel {
     }
 
     public void StartNewGame(){
-        int numberOfStates = 2;
+        int numberOfStates = gameSettings.getNumberOfFacts();
         gameResult.startNewGame(gameType);
         GetRandomStates(numberOfStates);
     }
