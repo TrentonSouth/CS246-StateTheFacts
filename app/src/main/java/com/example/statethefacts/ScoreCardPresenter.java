@@ -56,7 +56,7 @@ public class ScoreCardPresenter {
         // getScore will return a float with the score from the game passed in.
         score = getScore(gameResult);
         // Set a format for decimals to round the scores to two places.
-        DecimalFormat decimalFormat = new DecimalFormat("##0.00");
+        DecimalFormat decimalFormat = new DecimalFormat("##0.0");
         // Apply the formatting to scoreAsString
         scoreAsString = decimalFormat.format(score);
         // If the score is 100, we don't want the decimal places.
