@@ -15,11 +15,11 @@ public class GameCardFactory {
 
     public Fragment getGameCard(CardType cardType) throws ClassNotFoundException {
         if(cardType == CardType.Answer)
-            return new CardAnswerFragment(viewModel);
+            return new CardAnswerFragment();
         if(viewModel.getGameType() == GameType.MultipleChoice)
-            return new CardMultipleChoiceFragment(viewModel);
+            return new CardMultipleChoiceFragment();
         if(viewModel.getGameType() == GameType.TextEntry)
-            return new CardTextEntryFragment(viewModel);
+            return new CardTextEntryFragment();
 
         throw new ClassNotFoundException("No Card fragments found.");
     }

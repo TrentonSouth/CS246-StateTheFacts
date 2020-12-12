@@ -30,10 +30,10 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.card_flipper_activity);
 
         Intent intent  = getIntent();
-        boolean startNewGame = intent.getBooleanExtra(MainActivity.START_NEW_GAME,true);
+        boolean startNewGame = intent.getBooleanExtra(MainActivity.START_NEW_GAME,false);
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
-        if(startNewGame)
+        if(startNewGame && viewModel.getGameId() == null)
             viewModel.StartNewGame();
         else
             viewModel.ResumeGame();
@@ -115,23 +115,14 @@ public class GameActivity extends AppCompatActivity {
         viewModel.saveGame();
     }
 
-
-    private boolean showingBack;
-
-    public void flipCard() {
+    public void flipCard(CardType nextCardType) {
         Fragment nextCard = null;
 
         try {
-            if (showingBack) {
-                nextCard = cardFactory.getGameCard(CardType.Question);
-            } else {
-                nextCard = cardFactory.getGameCard(CardType.Answer);
-            }
+            nextCard = cardFactory.getGameCard(nextCardType);
         } catch (ClassNotFoundException ex){
             Log.d("Error", "onCreate: Error Generating Game Card: "+ex.getMessage());
         }
-
-        showingBack = !showingBack;
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -146,13 +137,13 @@ public class GameActivity extends AppCompatActivity {
 
     public void submitAnswer(View view) {
         viewModel.submitAnswer(this);
-        flipCard();
+        flipCard(CardType.Answer);
     }
 
     public void nextQuestion(View view) {
         if(viewModel.hasMoreStates())
         {
-            flipCard();
+            flipCard(CardType.Question);
             return;
         }
 

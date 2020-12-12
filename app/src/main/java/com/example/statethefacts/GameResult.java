@@ -102,7 +102,6 @@ public class GameResult {
             e.printStackTrace();
             return false;
         }
-
     }
 
     private String buildFileName(UUID gameId) {
