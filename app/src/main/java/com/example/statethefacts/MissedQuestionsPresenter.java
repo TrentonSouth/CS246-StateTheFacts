@@ -2,7 +2,6 @@ package com.example.statethefacts;
 
 import android.content.Context;
 import android.os.Build;
-import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
@@ -46,7 +45,7 @@ public class MissedQuestionsPresenter {
         // incorrect, add to the display the user's answer and
         // the correct answer.
         for (GameAnswer gameAnswer : gameAnswers) {
-            if (!gameAnswer.HasCorrectAnswer()) {
+            if (!gameAnswer.hasCorrectAnswer()) {
                 display += gameAnswer.getState() + " - " + gameAnswer.getQuestionType() + "\n";
                 display += "Your Answer: " + gameAnswer.getSubmittedAnswer() + "\n";
                 display += "Correct Answer: " + gameAnswer.getCorrectAnswer() + "\n\n";

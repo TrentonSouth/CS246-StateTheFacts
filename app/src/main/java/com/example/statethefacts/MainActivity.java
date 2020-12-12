@@ -14,9 +14,9 @@ import androidx.appcompat.app.AppCompatActivity;
  * MainActivity: Start screen and launch activity. User accesses the rest of the app
  * from this activity.
  *
- *  @author Michael Gibson
- *  @version 1.0
- *  @since 12/8/2020
+ * @author Michael Gibson
+ * @version 1.0
+ * @since 12/8/2020
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * The onCreateOptionsMenu Method
      * Purpose: create the 3 dots (ellipsis) on right side of the app in the top bar
+     *
      * @param menu
      * @return boolean as true
      */
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * The onOptionsItemSelected Method
      * Purpose: makes the list found from the 3 dots (ellipsis) on right side of the app clickable
+     *
      * @param item
      * @return boolean as true
      */
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * onClick watches the button selection to direct the user to the proper activity
      * based on their choice.
+     *
      * @param view
      */
     @Override

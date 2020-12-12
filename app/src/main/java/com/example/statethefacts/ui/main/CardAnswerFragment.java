@@ -4,52 +4,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.statethefacts.GameAnswer;
-import com.example.statethefacts.GameQuestion;
 import com.example.statethefacts.R;
 
-public  class CardAnswerFragment extends Fragment {
-    private GameViewModel viewModel;
+/***
+ *  Loads activity, view model (presenter) and sets the initial state for the view
+ *  for displaying the answers to the question
+ *
+ * @author Gene Higgins
+ * @since 12/1/2020
+ */
+public class CardAnswerFragment extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.layout_card_answer, container, false);
-        return view;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.layout_card_answer, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
-        // TODO: Use the ViewModel
-
-        GameAnswer lastAnswer = viewModel.getLastAnswer();
-        GameQuestion lastQuestion = viewModel.getQuestion();
-
-        TextView textViewQuestion = this.getView().findViewById(R.id.textView_question);
-        textViewQuestion.setText("Question was " + lastQuestion.getQuestion());
-
-        TextView textViewCorrectAnswer = this.getView().findViewById(R.id.textView_correct_answer);
-        textViewCorrectAnswer.setText("Correct Answer: " + lastQuestion.getAnswer());
-
-        TextView textViewSubmittedAnswer = this.getView().findViewById(R.id.textView_submitted_answer);
-        textViewSubmittedAnswer.setText("Submitted Answer: " + lastAnswer.getSubmittedAnswer());
-
-
-        TextView textViewAnswerResult = this.getView().findViewById(R.id.textView_answer_result);
-        String answerResult;
-        if(lastAnswer.HasCorrectAnswer())
-            answerResult = "Correct Answer!";
-        else
-            answerResult = "Wrong Answer.";
-
-        textViewAnswerResult.setText(answerResult);
+        GameViewModel viewModel = new ViewModelProvider(requireActivity()).get(GameViewModel.class);
+        viewModel.setupAnswerCard(this.getView());
     }
 }

@@ -2,7 +2,6 @@ package com.example.statethefacts;
 
 import android.content.Context;
 import android.os.Build;
-import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
@@ -111,7 +110,7 @@ public class ScoreCardPresenter {
             // there is one answer for each question.
             questionCount += 1;
             // If the answer is correct, increment correctAnswers by 1
-            if (answer.HasCorrectAnswer())
+            if (answer.hasCorrectAnswer())
                 correctAnswers += 1;
         }
         // score will hold the value of correctAnswers divided by

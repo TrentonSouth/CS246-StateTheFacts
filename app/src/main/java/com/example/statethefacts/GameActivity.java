@@ -15,15 +15,27 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.statethefacts.ui.main.GameCardFactory;
 import com.example.statethefacts.ui.main.GameViewModel;
 
+/**
+ *  Initialize the primary game view.  Pipes events to the presenter
+ *
+ * @author Gene Higgins
+ * @since 12/1/2020
+ */
+
 public class GameActivity extends AppCompatActivity {
 
     public static final String GAME_ID = "com.example.statethefacts.GAME_ID";
     public static final String GAME_MODE = "com.example.statethefacts.GAME_MODE";
 
     Intent intent;
-    GameViewModel viewModel;
+    GameViewModel viewModel;  //note used as a presenter, used to keep state between screen rotations.
     GameCardFactory cardFactory;
 
+    /**
+     * Object initialization
+     * Determine if a new game should be started or old one continued and loads it.
+     * @param savedInstanceState - activity initialization data
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +46,9 @@ public class GameActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(GameViewModel.class);
         if(startNewGame && viewModel.getGameId() == null)
-            viewModel.StartNewGame();
+            viewModel.startNewGame();
         else
-            viewModel.ResumeGame();
+            viewModel.resumeGame();
 
         cardFactory = new GameCardFactory(viewModel);
 
@@ -108,6 +120,9 @@ public class GameActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * Save the game when the display is rotated or the app is no longer active
+     */
     @Override
     protected void onPause(){
         super.onPause();
@@ -135,11 +150,21 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
+    /**
+     * Saves the entered answer and flip to the Answer card to show the results
+     * @param view - current activity fragment
+     */
     public void submitAnswer(View view) {
         viewModel.submitAnswer(this);
         flipCard(CardType.Answer);
     }
 
+    /**
+     * Checks to see if there are more states to ask questions about
+     * If there are states then go to the next question card.
+     * If all states have been used then finish the game
+     * @param view - current activity fragment
+     */
     public void nextQuestion(View view) {
         if(viewModel.hasMoreStates())
         {

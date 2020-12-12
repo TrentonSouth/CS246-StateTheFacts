@@ -13,11 +13,18 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *  This class loads historical game data, calculates the stats and sets up the chart
+ *
+ * @author Gene Higgins
+ * @since 12/1/2020
+ */
 public class HistoryPresenter {
-    static final int MAX_CHART_ENTRIES = 10;
-    static final int ANIMATION_DURATION = 2000;
+    static final int MAX_CHART_ENTRIES = 10; // total number of entries for display on the chart
+    static final int ANIMATION_DURATION = 2000;  // animation time in milliseconds
 
     private final HistoryActivity activity;
+
     List<GameResult> gameResults;
     List<Entry> chartEntries;
     private int playAttempts;
@@ -28,12 +35,17 @@ public class HistoryPresenter {
         chartEntries = new ArrayList<>();
     }
 
+    /**
+     * Loads all of the historical games
+     */
     public void loadGameResult() {
         gameResults = new GameResult().getAllGames(activity);
         Collections.sort(gameResults, new SortByDate());
     }
 
-
+    /**
+     * Calculations all stats and applies them to the chart
+     */
     public void getStats() {
         List<Double> scores = getGameScores();
         getAverageScore(scores);
@@ -44,19 +56,30 @@ public class HistoryPresenter {
         setupChart();
     }
 
-    // Charts library information can be found at https://github.com/PhilJay/MPAndroidChart
+    /**
+     * get average of scores
+     * @return score average
+     */
     public double getAverageScoreEmail() {
         List<Double> scores = getGameScores();
         getAverageScore(scores);
         return averageScore;
     }
 
+    /**
+     * get a count of finished games
+     * @return total games completed
+     */
     public int getPlayAttemptsEmail() {
         getPlayAttempts();
         return playAttempts;
     }
 
+    /**
+     * Setup chart appearance, apply a data set to the chart.
+     */
     private void setupChart() {
+        // Charts library information can be found at https://github.com/PhilJay/MPAndroidChart
         LineChart chart = activity.findViewById(R.id.chart);
 
         LineDataSet dataSet = new LineDataSet(chartEntries, "Correct Answers");
@@ -80,7 +103,9 @@ public class HistoryPresenter {
         chart.invalidate();
     }
 
-
+    /**
+     * Apply derived stats to view controls
+     */
     private void setViewControls() {
         TextView textViewAverageScore = activity.findViewById(R.id.textAverageScore);
         textViewAverageScore.setText(String.format("%.2f", averageScore * 100) + "%");
@@ -89,6 +114,10 @@ public class HistoryPresenter {
         textViewPlayAttempts.setText(String.format("%d", playAttempts));
     }
 
+    /**
+     * runs through each completed game and calculate the game score as an percentage
+     * @return list of percentages.
+     */
     private List<Double> getGameScores() {
         List<Double> scores = new ArrayList<>();
         for (int i = 0; i < gameResults.size(); i++) {
@@ -108,6 +137,10 @@ public class HistoryPresenter {
         return scores;
     }
 
+    /**
+     * Calculates the average game score from a list of individual games scores
+     * @param scores average percentage scored.
+     */
     private void getAverageScore(List<Double> scores) {
         if (scores.size() == 0) {
             averageScore = 0;
@@ -120,35 +153,46 @@ public class HistoryPresenter {
         averageScore = sumOfScores / scores.size();
     }
 
-
-
+    /**
+     * Get up to the last 10 scores for the chart.
+     * @param scores list of percentages to pull from, expected to be in order of play
+     */
     private void getChartEntries(List<Double> scores) {
         if (scores.size() == 0) {
             return;
         }
 
         int index = 1;
+        // find out how many scores to use
         int entryLimit = Math.min(scores.size(), MAX_CHART_ENTRIES);
         int firstEntry = scores.size() - entryLimit;
-        if(firstEntry < 0)
+        if (firstEntry < 0)
             firstEntry = 0;
 
+        // add entries to chart data list
         for (int i = firstEntry; i < scores.size(); i++) {
             chartEntries.add(new Entry(index++, scores.get(i).floatValue() * 100));
         }
     }
 
-
+    /**
+     * get number of missed answers
+     * @param answers list of game answers
+     * @return total missed answers
+     */
     private int getMissedAnswers(List<GameAnswer> answers) {
         int totalMissed = 0;
         for (GameAnswer answer : answers) {
-            if (answer.HasCorrectAnswer())
+            if (answer.hasCorrectAnswer())
                 continue;
             totalMissed++;
         }
         return totalMissed;
     }
 
+    /**
+     * find total number of finished games
+     */
     private void getPlayAttempts() {
         playAttempts = 0;
         for (GameResult result : gameResults) {
